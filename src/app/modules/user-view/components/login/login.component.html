@@ -1,0 +1,39 @@
+<div class="row mt-5 mx-3">
+    <div class="col-xl-4 col-lg-2 col-md-3 col-sm-12 col-xs-12"></div>
+    <div class="col-xl-4 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+        <div class="card w-100">
+            <div class="card-header bg-light">
+                <h2 class="card-title">Iniciar sesión</h2>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="formLogin" (ngSubmit)="login()">
+                    <div class="form-group">
+                        <label class="h4">Usuario</label>
+                        <input type="text" class="form-control form-control-md" placeholder="username"
+                            [ngClass]="{ 'is-invalid': submitted && f.username.errors }" formControlName="username"
+                            autofocus>
+                        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                            <div *ngIf="f.username.errors.required">El usuario es necesario</div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="h4" for="password">Contraseña</label>
+                        <input type="password" class="form-control form-control-md" placeholder="password"
+                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" formControlName="password">
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">La contraseña es necesario</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                </form>
+            </div>
+
+            <div class="card-footer">
+                <small class="form-text text-muted">Solicitar credenciales en su institución.</small>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-xl-4 col-lg-2 col-md-3 col-sm-12 col-xs-12"></div>
+</div>

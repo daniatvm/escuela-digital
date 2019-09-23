@@ -1,0 +1,93 @@
+<div class="row mt-3 mx-3">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 first-col ">
+        <div><br></div>
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Filtro</h2>
+            </div>
+            <br>
+            <div class="card-body my-3">
+                <ul class="list-group ">
+                    <li class="list-group-item mb-4">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">Nivel</label>
+                            </div>
+                            <select class="custom-select" id="inputGroupSelect0">
+                                <option selected>Choose...</option>
+                                <option value="1">Primero</option>
+                                <option value="2">Segundo</option>
+                                <option value="3">Tercero</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li class="list-group-item mb-4">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">Seccion</label>
+                            </div>
+                            <select class="custom-select" id="inputGroupSelect01">
+                                <option selected>Choose...</option>
+                                <option value="1">1-1</option>
+                                <option value="2">2-1</option>
+                                <option value="3">3-1</option>
+                            </select>
+                        </div>
+                    </li>
+                    <fieldset disabled>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Profesor líder</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="{{profesor}}">
+                        </div>
+                    </fieldset>
+
+
+                </ul>
+                <br>
+                <button class="btn btn-primary btn-block mt-3" (click)="foo()">Filtrar</button>
+            </div>
+            <div class="card-footer"><br></div>
+        </div>
+
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 second_col">
+
+        <div class="container-fluid overflow-auto pt-2 in_second_col">
+
+            <div class="card mb-3" *ngFor="let new of news">
+                <div class="card-header">
+
+                    <h4 class="card-title text-capitalize"> {{new.title}} </h4>
+                </div>
+
+                <div class="card-body">
+                    <p class="card-title text-muted">Sección: <span> {{new.class_name}}</span>
+                    </p>
+                    <h5 class="card-title">
+                        Publicado por: <span class="text-capitalize"> {{new.created_by}} </span>
+                    </h5>
+                    <p class="card-text">
+                        {{new.description}}
+                    </p>
+
+                    <div class="pic_holder mb-3">
+                        <img [src]="new.image" class="card-img-top">
+                    </div>
+                </div>
+
+                <div class="card-footer text-right">
+                    <small class="form-text text-muted "> {{new.date}} </small>
+                </div>
+
+            </div>
+            <!-- <app-group-new></app-group-new> -->
+
+        </div>
+        <!-- <div class="container-fluid mb-3 mt-3 text-right mb-5">
+                <button class="btn btn-info">Nuevo Aviso</button>
+            </div> -->
+
+    </div>
+</div>

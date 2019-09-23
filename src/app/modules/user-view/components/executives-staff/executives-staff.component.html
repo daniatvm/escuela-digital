@@ -1,0 +1,38 @@
+<div class="row mt-3 mx-3">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center first-col">
+        <div class="card mt-3">
+            <div class="card-header">
+                <h2 class="card-title">Junta de Educación</h2>
+            </div>
+            <div class="card-body">
+                <p class="card-text text-justify">
+                    {{board.description}}
+                </p>
+                <br>
+                <p class="card-text text-muted mt-3">
+                    Teléfono de contacto: {{board.telephone}}
+                </p>
+                <p class="card-text text-muted">
+                    Correo: {{board.email}}
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 overflow-auto second-col">
+
+        <div class="card mb-3 py-2" *ngFor="let e of executives">
+            <div class="row">
+                <div class="col-md-4 pic_holder">
+                    <img [src]="e.image" class="card-img" alt="text-imagen">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title"> {{ e.name }} </h5>
+                        <p class="card-text"><small class="text-muted"> {{e.job_name}} </small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

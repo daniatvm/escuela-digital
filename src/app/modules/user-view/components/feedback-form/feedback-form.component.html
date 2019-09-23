@@ -1,0 +1,158 @@
+<div class="card mt-3 ">
+    <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+                    aria-controls="nav-home" aria-selected="true">Sugerencias</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+                    aria-controls="nav-profile" aria-selected="false">Consultas</a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body">
+        <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="container-fluid">
+
+                    <!--  -->
+                    <form [formGroup]="sugerenciaForm" (ngSubmit)="send_sugerencia()">
+
+                        <div class="form-group">
+                            <label class="font-weight-bold">Nombre</label>
+                            <input type="text" class="form-control" placeholder="Nombre" formControlName="name"
+                                [ngClass]="{ 'is-invalid': submittedSugerencia && sugerenciaControls.name.errors }">
+
+                            <div *ngIf="submittedSugerencia && sugerenciaControls.name.errors" class="invalid-feedback">
+                                <div *ngIf="sugerenciaControls.name.errors.required">El nombre es necesario.</div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="font-weight-bold">Teléfono</label>
+                            <input type="text" class="form-control"
+                                [ngClass]="{ 'is-invalid': submittedSugerencia && sugerenciaControls.phoneNumber.errors }"
+                                placeholder="Teléfono" formControlName="phoneNumber">
+                            <div *ngIf="submittedSugerencia && sugerenciaControls.phoneNumber.errors"
+                                class="invalid-feedback">
+                                <div *ngIf="sugerenciaControls.phoneNumber.errors.required">El teléfono es necesario.
+                                </div>
+                                <div
+                                    *ngIf="sugerenciaControls.phoneNumber.errors.pattern || sugerenciaControls.phoneNumber.errors.maxlength || sugerenciaControls.phoneNumber.errors.minlength">
+                                    Teléfono incorrecto.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="font-weight-bold">Dirrección de Correo</label>
+                            <input type="email" class="form-control"
+                                [ngClass]="{ 'is-invalid': submittedSugerencia && sugerenciaControls.email.errors}"
+                                formControlName="email" placeholder="example@email.com">
+                            <small id="emailHelp" class="form-text text-muted">No compartiremos su correo.</small>
+                            <div *ngIf="submittedSugerencia && sugerenciaControls.email.errors"
+                                class="invalid-feedback">
+                                <div *ngIf="sugerenciaControls.email.errors.required">El correo es necesario.
+                                </div>
+                                <div *ngIf="sugerenciaControls.email.errors.email">
+                                    El correo es inválido.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="font-weight-bold">Sugerencia</label>
+                            <textarea value="" class="form-control"
+                                [ngClass]="{ 'is-invalid': submittedSugerencia && sugerenciaControls.description.errors}"
+                                id="InputText1" rows="6" formControlName="description"></textarea>
+                            <div *ngIf="submittedSugerencia && sugerenciaControls.description.errors"
+                                class="invalid-feedback">
+                                <div *ngIf="sugerenciaControls.description.errors.required">
+                                    Debe escribir su sugerencia.
+                                </div>
+                                <div *ngIf="sugerenciaControls.description.errors.maxlength">
+                                    La sugerencia tiene un límite de 280 caracteres.
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button class="btn btn-primary">Enviar</button>
+                    </form>
+                    <!--  -->
+
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <div class="container-fluid">
+
+                    <!--  -->
+                    <form [formGroup]="consultaForm" (ngSubmit)="send_consulta()">
+
+                        <div class="form-group">
+                            <label class="font-weight-bold" for="InputName2">Nombre</label>
+                            <input type="text" class="form-control" placeholder="Nombre" formControlName="name"
+                                [ngClass]="{ 'is-invalid': submittedConsulta && consultaControls.name.errors }">
+                            <div *ngIf="submittedConsulta && consultaControls.name.errors" class="invalid-feedback">
+                                <div *ngIf="consultaControls.name.errors.required">El nombre es necesario.</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="font-weight-bold" for="InputNumber2">Teléfono</label>
+                            <input type="text" class="form-control" placeholder="Teléfono" formControlName="phoneNumber"
+                                [ngClass]="{ 'is-invalid': submittedConsulta && consultaControls.phoneNumber.errors }">
+
+                            <div *ngIf="submittedConsulta && consultaControls.phoneNumber.errors"
+                                class="invalid-feedback">
+                                <div *ngIf="consultaControls.phoneNumber.errors.required">El teléfono es necesario.
+                                </div>
+                                <div
+                                    *ngIf="consultaControls.phoneNumber.errors.pattern || consultaControls.phoneNumber.errors.maxlength || consultaControls.phoneNumber.errors.minlength">
+                                    Teléfono incorrecto.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="font-weight-bold" for="InputEmail2">Dirrección de Correo</label>
+                            <input type="text" class="form-control" placeholder="example@email.com"
+                                [ngClass]="{ 'is-invalid': submittedConsulta && consultaControls.email.errors }"
+                                formControlName="email">
+                            <small id="emailHelp" class="form-text text-muted">No compartiremos su correo.</small>
+                            <div *ngIf="submittedConsulta && consultaControls.email.errors" class="invalid-feedback">
+                                <div *ngIf="consultaControls.email.errors.required">El correo es necesario.
+                                </div>
+                                <div *ngIf="consultaControls.email.errors.email">
+                                    El correo es inválido.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="font-weight-bold" for="InputText2">Consulta</label>
+                            <textarea class="form-control" rows="6" formControlName="description"
+                                [ngClass]="{ 'is-invalid': submittedConsulta && consultaControls.description.errors }"></textarea>
+                            <div *ngIf="submittedConsulta && consultaControls.description.errors"
+                                class="invalid-feedback">
+                                <div *ngIf="consultaControls.description.errors.required">
+                                    Debe escribir su consulta.
+                                </div>
+                                <div *ngIf="consultaControls.description.errors.maxlength">
+                                    La consulta tiene un límite de 280 caracteres.
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary">Enviar</button>
+                    </form>
+                    <!--  -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

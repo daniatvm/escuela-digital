@@ -1,0 +1,17 @@
+agm-map {
+    /* Esto es para el mapa */
+    width: 100%;
+    height: 40vh;
+}
+
+.first-col {
+    height: 82vh;
+}
+
+.my-card {
+    height: 78vh;
+}
+
+.second-col {
+    height: 84vh;
+}
