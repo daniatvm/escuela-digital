@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary text-uppercase sticky-top">
-    <a class="navbar-brand font-weight-normal" routerLink="/">Escuela Digital</a>
+    <a class="navbar-brand font-weight-normal" [routerLink]="['/','']">Escuela Digital</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -8,34 +8,34 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto font-weight-normal">
             <li class="nav-item">
-                <a class="nav-link" routerLink="/Inicio" routerLinkActive="active">Inicio</a>
+                <a class="nav-link" [routerLink]="['/','Inicio']" routerLinkActive="active">Inicio</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/Grupos" routerLinkActive="active">Avisos</a>
+                <a class="nav-link" [routerLink]="['/','Grupos']" routerLinkActive="active">Avisos</a>
             </li>
 
-            <li class="nav-item dropdown" [routerLinkActive]="['active']">
+            <li class="nav-item dropdown" [routerLinkActive]="['/','active']">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" routerLinkActive="active">
                     Personal
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item font-weight-normal" routerLink="/Docentes"
+                    <a class="dropdown-item font-weight-normal" [routerLink]="['/','Docentes']"
                         routerLinkActive="active">Docentes</a>
-                    <a class="dropdown-item font-weight-normal" routerLink="/Junta-Educacion"
+                    <a class="dropdown-item font-weight-normal" [routerLink]="['/','Junta-Educacion']"
                         routerLinkActive="active">Junta
                         de Educación</a>
                 </div>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" routerLink="/Galeria" routerLinkActive="active">Galería</a>
+                <a class="nav-link" [routerLink]="['/','Galeria']" routerLinkActive="active">Galería</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/Contacto" routerLinkActive="active">Contacto</a>
+                <a class="nav-link" [routerLink]="['/','Contacto']" routerLinkActive="active">Contacto</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/Acceso" routerLinkActive="active">Acceso</a>
+                <a class="nav-link" [routerLink]="['/','Acceso']" routerLinkActive="active">Acceso</a>
             </li>
         </ul>
     </div>

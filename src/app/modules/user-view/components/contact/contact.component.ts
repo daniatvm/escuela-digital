@@ -30,7 +30,7 @@ export class ContactComponent implements OnInit {
       address: 'San Francisco de dos Ríos.',
       image: '',
       email: 'escuelarepublicadominicana@yahoo.es',
-      celphone: '7525-3654',
+      cellphone: '7525-3654',
       telephone: '2536-5145'
     }
     this.lat = this.school.lat;

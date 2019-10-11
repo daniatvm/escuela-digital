@@ -6,6 +6,6 @@ export interface School {
     address?: string;
     image?: string;
     email?: string;
-    celphone?: string;
+    cellphone?: string;
     telephone?: string;
 }

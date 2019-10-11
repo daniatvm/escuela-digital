@@ -4,24 +4,31 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import {HttpClientModule} from '@angular/common/http'
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { LoginService } from './services/login.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     {
       provide: LocationStrategy,
-      useClass: HashLocationStrategy
-    }
+      useClass: HashLocationStrategy,
+
+    },
+    LoginService
   ],
   bootstrap: [AppComponent]
 })

@@ -17,7 +17,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/Inicio',
+        redirectTo: 'Inicio',
         pathMatch: 'full'
       },
       {

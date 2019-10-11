@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { AdminGuard } from './guards/admin.guard';
 
 
 const routes: Routes = [
@@ -7,10 +9,11 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./modules/user-view/user-view.module').then(m => m.UserViewModule)
   },
-  /*{
+  {
     path:'admin',
-    loadChildren: () => import('./modules/').then(m => m.)
-  },*/
+    loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule),
+    canActivate: [AdminGuard]
+  },
   {
     path: 'professor',
     loadChildren: () => import('./modules/professor/professor.module').then(m => m.ProfessorModule)
@@ -21,8 +24,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '',
-    pathMatch: 'full'
+    component: NotFoundComponent
   }
 ];
 

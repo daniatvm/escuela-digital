@@ -34,6 +34,7 @@ ng g c modules/admin/components/user-settings --skipTests=true
 ng g c modules/admin/components/gallery-crud --skipTests=true
 ng g c modules/admin/components/information --skipTests=true
 ng g c modules/admin/components/admin-settings --skipTests=true
+ng g c modules/admin/components/update-school --skipTests=true
 
 
 ng g interface models/general-new
@@ -41,7 +42,12 @@ ng g interface models/specific-new
 ng g interface models/user
 ng g interface models/employee
 ng g interface models/school
+ng g interface models/level
 
+ng g c not-found --skipTests=true
 
+ng g service services/login --skipTests=true
+
+ng g guard guards/admin
 
 npm install @agm/core
