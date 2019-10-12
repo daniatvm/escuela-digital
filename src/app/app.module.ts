@@ -9,6 +9,7 @@ import {HttpClientModule} from '@angular/common/http'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginService } from './services/login.service';
+import { SchoolService } from './services/school.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LoginService } from './services/login.service';
       useClass: HashLocationStrategy,
 
     },
-    LoginService
+    LoginService,
+    SchoolService
   ],
   bootstrap: [AppComponent]
 })

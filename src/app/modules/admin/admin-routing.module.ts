@@ -12,11 +12,11 @@ const routes: Routes = [
       [
         {
           path: '',
-          redirectTo: 'update-school',
+          redirectTo: 'escuela',
           pathMatch: 'full',
         },
         {
-          path: 'update-school',
+          path: 'escuela',
           component: UpdateSchoolComponent
         }
       ]

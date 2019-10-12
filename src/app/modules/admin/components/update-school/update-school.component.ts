@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SchoolService } from 'src/app/services/school.service';
 
 @Component({
   selector: 'app-update-school',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateSchoolComponent implements OnInit {
 
-  constructor() { }
+
+
+  constructor(private schoolService: SchoolService) { }
 
   ngOnInit() {
+    this.getSchool();
+  }
+
+  getSchool() {
+    this.schoolService.getSchool().subscribe(
+      res => {
+        var response: any = res;
+        if(response.success){
+          console.log(JSON.parse(response.data));  
+        }
+      },
+      err => {
+        console.error(err);
+      }
+    )
   }
 
 }

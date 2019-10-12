@@ -23,7 +23,10 @@
                             [ngClass]="{ 'is-invalid': submitted && f.password.errors }" formControlName="password">
                         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                             <div *ngIf="f.password.errors.required">La contraseña es necesario</div>
+                            <div *ngIf="f.password.errors.maxlength">La contraseña tiene un limite de 14 caracteres.
+                            </div>
                         </div>
+
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Entrar</button>
                 </form>
