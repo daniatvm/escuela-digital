@@ -9,11 +9,13 @@ import { AdminComponent } from './admin.component';
 import { UpdateSchoolComponent } from './components/update-school/update-school.component';
 import { AdminNavigationComponent } from './components/admin-navigation/admin-navigation.component';
 import { EmployeesCrudComponent } from './components/employees-crud/employees-crud.component';
+import { CreateJobComponent } from './components/create-job/create-job.component';
+import { CreateEmployeeComponent } from './components/create-employee/create-employee.component';
 
 
 
 @NgModule({
-  declarations: [AdminComponent, UpdateSchoolComponent, AdminNavigationComponent, EmployeesCrudComponent],
+  declarations: [AdminComponent, UpdateSchoolComponent, AdminNavigationComponent, EmployeesCrudComponent, CreateJobComponent, CreateEmployeeComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

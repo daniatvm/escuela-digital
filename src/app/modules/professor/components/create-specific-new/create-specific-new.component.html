@@ -3,7 +3,7 @@
         <form [formGroup]="formCreate" (ngSubmit)="create()">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                    <div class="form-group">
+                    <div class="form-group"> 
                         <select class="form-control custom-select" formControlName="level" (change)="onChange($event)"
                             [ngClass]="{ 'is-invalid': submitted && f.level.errors }">
 

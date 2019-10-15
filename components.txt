@@ -30,6 +30,8 @@ ng g c modules/admin --skipTests=true
 ng g c modules/admin/components/update-school --skipTests=true
 ng g c modules/admin/components/admin-navigation --skipTests=true
 ng g c modules/admin/components/employees-crud --skipTests=true
+ng g c modules/admin/components/create-job --skipTests=true
+ng g c modules/admin/components/create-employee --skipTests=true
 
 
 ng g c modules/admin/components/gallery-crud --skipTests=true
@@ -48,6 +50,7 @@ ng g interface models/user
 ng g interface models/employee
 ng g interface models/school
 ng g interface models/level
+ng g interface models/job
 
 ng g c not-found --skipTests=true
 
@@ -56,6 +59,7 @@ ng g service services/login --skipTests=true
 
 #general
 ng g service services/school --skipTests=true
+ng g service services/employee --skipTests=true
 
 ng g guard guards/admin
 

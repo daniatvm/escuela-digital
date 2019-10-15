@@ -1,0 +1,27 @@
+<div class="container mt-3">
+    <div class="card">
+        <div class="card-body">
+            <div class="form-group">
+                <label>Puestos existentes:</label>
+                <select class="form-control custom-select">
+
+                    <!-- <option [ngValue]="null" disabled selected>Seleccione un puesto</option> -->
+                    <option [ngValue]="j" *ngFor="let j of jobs">{{j.name}}</option>
+
+                </select>
+            </div>
+            <hr>
+            <hr>
+            <form [formGroup]="jobCreate" (ngSubmit)="createJob()">
+                <div class="form-group">
+                    <label>Nombre del puesto:</label>
+                    <input class="form-control" type="text" formControlName="name" 
+                        [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                </div>
+                <button class="btn btn-primary btn-block">Crear</button>
+            </form>
+        </div>
+
+    </div>
+
+</div>
