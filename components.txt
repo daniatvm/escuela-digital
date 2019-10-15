@@ -27,15 +27,19 @@ ng g c modules/supervisor/components/supervisor-settings --skipTests=true
 
 ng g m modules/admin --routing
 ng g c modules/admin --skipTests=true
-ng g c modules/admin/components/general-news-crud --skipTests=true
-ng g c modules/admin/components/specific-news-crud --skipTests=true
-ng g c modules/admin/components/user-crud --skipTests=true
-ng g c modules/admin/components/user-settings --skipTests=true
-ng g c modules/admin/components/gallery-crud --skipTests=true
-ng g c modules/admin/components/information --skipTests=true
-ng g c modules/admin/components/admin-settings --skipTests=true
 ng g c modules/admin/components/update-school --skipTests=true
 ng g c modules/admin/components/admin-navigation --skipTests=true
+ng g c modules/admin/components/employees-crud --skipTests=true
+
+
+ng g c modules/admin/components/gallery-crud --skipTests=true
+
+ng g c modules/admin/components/general-news-crud --skipTests=true
+ng g c modules/admin/components/specific-news-crud --skipTests=true
+ng g c modules/admin/components/user-settings --skipTests=true
+ng g c modules/admin/components/information --skipTests=true
+ng g c modules/admin/components/admin-settings --skipTests=true
+
 
 
 ng g interface models/general-new

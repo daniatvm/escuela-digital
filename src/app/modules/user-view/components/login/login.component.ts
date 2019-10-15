@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.formLogin = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', [Validators.required, Validators.maxLength(14)]]
+      password: ['', [Validators.required]]
     });
   }
 
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
 
           var response: any = res;
           if (response.success) {
-            var data: any = JSON.parse(response.data);
+            var data: any = (response.data);
             if (data.id_access_type == 1) {
               this.loginServices.saveLocal(data);
               this.router.navigate(['admin']);
