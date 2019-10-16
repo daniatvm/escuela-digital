@@ -3,12 +3,16 @@
         <div class="col-3">
             <hr>
             filtrar por nivel
-            <form>
-                <select class="form-group custom-select">
+            <form [formGroup]="filterLevel" (ngSubmit)="filter()">
+
+                <select class="form-group custom-select" formControlName="level"
+                [ngClass]="{ 'is-invalid': submitted && f.level.errors }">
                     <option [ngValue]="null" disabled selected>Seleccione un nivel</option>
 
                     <option [ngValue]="j" *ngFor="let j of levels">{{j.name}}</option>
                 </select>
+
+            
                 <button class="btn btn-success btn-block">Filtrar</button>
 
             </form>

@@ -25,11 +25,19 @@ export class EmployeeService {
     return this.http.get(`http://127.0.0.1:8000/api/employee/by_job/${id_job}`);
   }
 
+  getEmployees(){
+    return this.http.get(`http://127.0.0.1:8000/api/employee/`);
+  }
+
   createEmployee(data) {
     return this.http.post('http://127.0.0.1:8000/api/employee/', data);
   }
   createUser(data) {
     return this.http.post('http://127.0.0.1:8000/api/user/', data);
+  }
+
+  resetPassword(data){
+    return this.http.post('http://127.0.0.1:8000/api/user/reset_password/', data);
   }
 
 }

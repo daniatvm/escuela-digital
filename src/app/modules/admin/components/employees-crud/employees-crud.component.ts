@@ -3,6 +3,7 @@ import { EmployeeService } from 'src/app/services/employee.service';
 import { Job } from 'src/app/models/job';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Level } from 'src/app/models/level';
+import { Employee } from 'src/app/models/employee';
 
 @Component({
   selector: 'app-employees-crud',
@@ -16,9 +17,11 @@ export class EmployeesCrudComponent implements OnInit {
   jobFilter: FormGroup;
   submittedJob: boolean = false;
 
-  levels: Level[];
+  /*levels: Level[];
   levelSelected: Level;
-  levelFilter: FormGroup;
+  levelFilter: FormGroup;*/
+
+  employees: Employee[];
 
 
 
@@ -43,14 +46,21 @@ export class EmployeesCrudComponent implements OnInit {
     } else {
       this.employeeService.
         getEmployeeByJob(this.jobFilter.value.job.id_job).
-          subscribe(
-            res => {
-              console.log(res);
-            },
-            err => {
-              console.log(err);
+        subscribe(
+          res => {
+            let r: any = res;
+            if (r.success) {
+              this.employees = r.data;
+              console.log(this.employees);
+            } else {
+              console.log('error laravel')
             }
-          )
+
+          },
+          err => {
+            console.log(err);
+          }
+        )
     }
   }
 
@@ -75,6 +85,31 @@ export class EmployeesCrudComponent implements OnInit {
 
   get jobC() {
     return this.jobFilter.controls;
+  }
+
+  resetPassword(e) {
+    let data = {
+      id_employee:e.value
+    }
+    this.employeeService.resetPassword(data).subscribe(
+      res => {
+        let r:any = res;
+        if(r.success){
+          alert('Reseteada');
+        }else{
+          alert('no Reseteada');
+        }
+      },
+      err => {
+        console.log(err);
+        console.log('Erro con laravel');
+      }
+    );
+  }
+
+  foo(ele) {
+    console.log(ele.value);
+
   }
 
 }
