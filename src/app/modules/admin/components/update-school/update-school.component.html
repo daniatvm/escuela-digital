@@ -1,1 +1,133 @@
-<p>update-school works!</p>
+<div class="container mt-1">
+
+    <ng-template [ngIf]="sended">
+        <ng-template [ngIf]="updated">
+            <div class="alert alert-dismissible alert-success">
+                <h5>Actualizado correctamente!</h5>
+            </div>
+        </ng-template>
+
+        <ng-template [ngIf]="!updated">
+            <div class="alert alert-dismissible alert-danger">
+                <h5>No se pudo actualizar correctamente!</h5>
+            </div>
+        </ng-template>
+    </ng-template>
+
+
+
+    <div class="card mb-2">
+        <div class="card-body">
+            <form [formGroup]="updateSchool" (ngSubmit)="send()">
+
+                <div class="form-row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                        <div class="form-group">
+                            <label class="font-weight-bold">Nombre</label>
+                            <input type="text" class="form-control" formControlName="name"
+                                [ngClass]="{ 'is-invalid': submitted && f.name.errors}" autofocus>
+                            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                <div *ngIf="f.name.errors.required">El nombre es necesario.</div>
+                                <div *ngIf="f.name.errors.maxlength">Maximo 30 caracteres.</div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                        <div class="form-group">
+                            <label class="font-weight-bold">Correo</label>
+                            <input type="text" class="form-control" formControlName="email"
+                                [ngClass]="{ 'is-invalid': submitted && f.email.errors}">
+                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                <div *ngIf="f.email.errors.required">El correo es necesario.</div>
+                                <div *ngIf="f.email.errors.email || f.email.errors.maxlength">Ejemplo:
+                                    ejemplo@email.com. De maximo 50 caracteres</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                        <div class="form-group">
+                            <label class="font-weight-bold">Telefono</label>
+                            <input type="text" class="form-control" formControlName="tel"
+                                [ngClass]="{ 'is-invalid': submitted && f.tel.errors}">
+                            <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
+                                <div *ngIf="f.tel.errors.required">El telefono es necesario.</div>
+                                <div *ngIf="f.tel.errors.pattern || f.tel.errors.maxlength">Ejemplo: 28880369.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="font-weight-bold">Descripción</label>
+                    <textarea class="form-control" name="description" id="description" rows="4"
+                        formControlName="description"
+                        [ngClass]="{ 'is-invalid': submitted && f.description.errors}"></textarea>
+                    <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                        <div *ngIf="f.description.errors.required">La descripción es requerida.</div>
+                        <div *ngIf="f.description.errors.maxlength">Maximo 600 caracteres.</div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                        <div class="w-100 border border-dark">
+                            <agm-map (mapReady)="mapReady($event)" [latitude]="lat" [longitude]="lng" [zoom]="18"
+                                [usePanning]="true">
+                                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                            </agm-map>
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                        <div class="form-row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Latitud</label>
+                                    <input type="text" class="form-control" formControlName="lat"
+                                        [ngClass]="{ 'is-invalid': submitted && f.lat.errors}">
+                                    <div *ngIf="submitted && f.lat.errors" class="invalid-feedback">
+                                        <div *ngIf="f.lat.errors.required">La latitud es necesario.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Longitud</label>
+                                    <input type="text" class="form-control" formControlName="lng"
+                                        [ngClass]="{ 'is-invalid': submitted && f.lng.errors}">
+                                    <div *ngIf="submitted && f.lng.errors" class="invalid-feedback">
+                                        <div *ngIf="f.lng.errors.required">La longitud es necesario.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Dirección</label>
+                                    <input type="text" class="form-control" formControlName="address"
+                                        [ngClass]="{ 'is-invalid': submitted && f.address.errors}">
+                                    <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                                        <div *ngIf="f.address.errors.required">La dirección es necesario.</div>
+                                        <div *ngIf="f.address.errors.maxlength">Maximo 200 caracteres.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-right">
+                    <button type="submit" class="btn btn-outline-primary">Actualizar</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>

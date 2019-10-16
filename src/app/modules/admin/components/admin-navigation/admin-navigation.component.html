@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary text-uppercase sticky-top">
-    <a class="navbar-brand font-weight-normal" [routerLink]="['/','professor']">Escuela Digital</a>
+    <a class="navbar-brand font-weight-normal" [routerLink]="['/','admin']">Escuela Digital</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -8,16 +8,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto font-weight-normal">
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="['crear']" routerLinkActive="active">Crea aviso</a>
+                <a class="nav-link" [routerLink]="['/','admin','escuela']" routerLinkActive="active">Escuela</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="['mis-publicaciones']" routerLinkActive="active">Mis avisos</a>
+                <a class="nav-link" [routerLink]="['/','admin','empleados']" routerLinkActive="active">Empleados</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="['ajustes']" routerLinkActive="active">Ajustes</a>
+                <a class="nav-link" [routerLink]="['/','admin','clases']" routerLinkActive="active">Clases</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/']" routerLinkActive="active">Salir</a>
+                <a class="nav-link" [routerLink]="['/','Inicio']" routerLinkActive="active">Salir</a>
             </li>
         </ul>
     </div>

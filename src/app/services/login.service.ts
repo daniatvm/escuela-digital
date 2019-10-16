@@ -9,7 +9,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   validate_login(data) {
-    return this.http.post('http://localhost:8000/api/access_type/bar', data);
+    return this.http.post('http://127.0.0.1:8000/api/user/authenticate/', data);
   }
 
   saveLocal(data) {

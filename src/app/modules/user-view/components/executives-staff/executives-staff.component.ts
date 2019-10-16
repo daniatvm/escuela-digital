@@ -32,37 +32,37 @@ export class ExecutivesStaffComponent implements OnInit {
       {
         id_employee: 1,
         id_job: 2,
-        cellphone: '9442-8566',
-        job_name: 'Miembro de la Junta de Educacion.',
+        //cellphone: '9442-8566',
+        //job_name: 'Miembro de la Junta de Educacion.',
         name: "Marco Segura Matarrita",
-        email: "ejemplo@email.com",
+        //email: "ejemplo@email.com",
         image: "https://pro2-bar-s3-cdn-cf4.myportfolio.com/3a227f4b9a8ebe035b7799961cc0c1e8/f26346e8-39cf-43bd-a8fd-cc4b4f20a99b_rw_1920.jpg?h=70be0465b99945d93718517e7636649c"
       },
       {
         id_employee: 1,
         id_job: 2,
-        cellphone: '9442-8566',
-        job_name: 'Miembro de la Junta de Educacion.',
+        //cellphone: '9442-8566',
+        //job_name: 'Miembro de la Junta de Educacion.',
         name: "Elena Martínez Rojas",
-        email: "ejemplo@email.com",
+        //email: "ejemplo@email.com",
         image: "http://sites.psu.edu/iabcpennstate/wp-content/uploads/sites/18140/2015/01/professional-woman-4.jpg"
       },
       {
         id_employee: 1,
         id_job: 2,
-        cellphone: '9442-8566',
-        job_name: 'Miembro de la Junta de Educacion.',
+        //cellphone: '9442-8566',
+        //job_name: 'Miembro de la Junta de Educacion.',
         name: "Eduardo Ramírez Piedra",
-        email: "ejemplo@email.com",
+        //email: "ejemplo@email.com",
         image: "https://nadiazheng.com/wp-content/uploads/2017/01/Montreal-business-portrait-professional-accoutant-linkedin-profile.jpg"
       },
       {
         id_employee: 1,
         id_job: 2,
-        cellphone: '9442-8566',
-        job_name: 'Miembro de la Junta de Educacion.',
+        //cellphone: '9442-8566',
+        //job_name: 'Miembro de la Junta de Educacion.',
         name: "Milena Brenes Astorga",
-        email: "ejemplo@email.com",
+        //email: "ejemplo@email.com",
         image: "http://nadiazheng.com/wp-content/uploads/2015/12/Montreal-authentic-natural-professional-headshot.jpg"
       }
     ];

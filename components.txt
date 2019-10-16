@@ -27,14 +27,24 @@ ng g c modules/supervisor/components/supervisor-settings --skipTests=true
 
 ng g m modules/admin --routing
 ng g c modules/admin --skipTests=true
+ng g c modules/admin/components/update-school --skipTests=true
+ng g c modules/admin/components/admin-navigation --skipTests=true
+ng g c modules/admin/components/employees-crud --skipTests=true
+ng g c modules/admin/components/create-job --skipTests=true
+ng g c modules/admin/components/create-employee --skipTests=true
+ng g c modules/admin/components/class-crud --skipTests=true
+ng g c modules/admin/components/create-level --skipTests=true
+ng g c modules/admin/components/create-class --skipTests=true
+
+
+
+ng g c modules/admin/components/gallery-crud --skipTests=true
 ng g c modules/admin/components/general-news-crud --skipTests=true
 ng g c modules/admin/components/specific-news-crud --skipTests=true
-ng g c modules/admin/components/user-crud --skipTests=true
 ng g c modules/admin/components/user-settings --skipTests=true
-ng g c modules/admin/components/gallery-crud --skipTests=true
 ng g c modules/admin/components/information --skipTests=true
 ng g c modules/admin/components/admin-settings --skipTests=true
-ng g c modules/admin/components/update-school --skipTests=true
+
 
 
 ng g interface models/general-new
@@ -43,10 +53,18 @@ ng g interface models/user
 ng g interface models/employee
 ng g interface models/school
 ng g interface models/level
+ng g interface models/job
+ng g interface models/access
 
 ng g c not-found --skipTests=true
 
+
 ng g service services/login --skipTests=true
+
+#general
+ng g service services/school --skipTests=true
+ng g service services/employee --skipTests=true
+ng g service services/class --skipTests=true
 
 ng g guard guards/admin
 

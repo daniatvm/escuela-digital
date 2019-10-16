@@ -1,0 +1,95 @@
+<div class="container mt-3">
+    <div class="card">
+        <div class="card-body">
+            <form [formGroup]="employeeForm" (ngSubmit)="createEmployee()">
+
+
+                <div class="form-row">
+                    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                        <label class="font-weight-bold">Nombre</label>
+                        <input type="text" class="form-control" formControlName="name"
+                            [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                            <div *ngIf="f.name.errors.required">El nombre es necesario.</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                        <label class="font-weight-bold">Apellido 1</label>
+                        <input type="text" class="form-control" formControlName="last_name"
+                            [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }">
+                        <div *ngIf="submitted && f.last_name.errors" class="invalid-feedback">
+                            <div *ngIf="f.last_name.errors.required">El apellido 1 es necesario.</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                        <label class="font-weight-bold">Apellido 2</label>
+                        <input type="text" class="form-control" formControlName="second_last_name"
+                            [ngClass]="{ 'is-invalid': submitted && f.second_last_name.errors }">
+                        <div *ngIf="submitted && f.second_last_name.errors" class="invalid-feedback">
+                            <div *ngIf="f.second_last_name.errors.required">El apellido 2 es necesario.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                        <label class="font-weight-bold">Cedula</label>
+                        <input type="text" class="form-control" formControlName="id_card"
+                            [ngClass]="{'is-invalid': submitted && f.id_card.errors}">
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                        <label class="font-weight-bold">Empleo</label>
+                        <select class="form-control custom-select" formControlName="job"
+                            [ngClass]="{ 'is-invalid': submitted && f.job.errors }">
+
+                            <option [ngValue]="null" disabled selected>Seleccione un puesto</option>
+                            <option [ngValue]="j" *ngFor="let j of jobs">{{j.name}}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                        <label class="font-weight-bold">Tipo de Accesso</label>
+                        <select class="form-control custom-select" formControlName="access"
+                            [ngClass]="{ 'is-invalid': submitted && f.access.errors }">
+
+                            <option [ngValue]="null" disabled selected>Seleccione un tipo de acceso</option>
+                            <option [ngValue]="j" *ngFor="let j of accesses">{{j.name}}</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                        <label class="font-weight-bold">Imagen</label>
+                        <input type="text" class="form-control" formControlName="image"
+                            [ngClass]="{ 'is-invalid': submitted && f.image.errors }">
+                        <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
+                            <div *ngIf="f.image.errors.required">La image es necesario.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="form-group">
+                    <label class="font-weight-bold">Foto</label>
+                    <input #file type="file" class="form-control-file form-control-md" accept='image/*'
+                        (change)="preview(file.files)" [ngClass]="{ 'text-danger': submitted && f.photo.errors }"
+                        formControlName="photo">
+                    <small class="text-danger" *ngIf="message">{{message}}</small>
+                    <div *ngIf="submitted && f.photo.errors" class="text-danger">
+                        <small *ngIf="f.photo.errors.required">Se debe subir una imagen.</small>
+                    </div>
+                </div> -->
+
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+            </form>
+        </div>
+    </div>
+</div>

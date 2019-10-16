@@ -1,4 +1,5 @@
 export interface School {
+    id_school?:number;
     name?: string;
     description?: string;
     lat?: Number;
@@ -6,6 +7,5 @@ export interface School {
     address?: string;
     image?: string;
     email?: string;
-    cellphone?: string;
     telephone?: string;
 }
