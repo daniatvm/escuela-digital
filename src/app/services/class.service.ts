@@ -19,4 +19,8 @@ export class ClassService {
     return this.http.post('http://localhost:8000/api/class/',data);
   }
 
+  getClasses(){
+    
+    return this.http.get('http://localhost:8000/api/class/');
+  }
 }

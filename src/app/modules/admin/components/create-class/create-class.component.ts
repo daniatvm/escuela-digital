@@ -50,7 +50,8 @@ export class CreateClassComponent implements OnInit {
       let data = {
         name: this.classForm.value.name,
         id_level: this.classForm.value.level.id_level,
-        id_employee:this.classForm.value.employee.id_employee
+        id_employee:this.classForm.value.employee.id_employee,
+        type:0
       }
       this.classServices.createClass(data).subscribe(
         res => {

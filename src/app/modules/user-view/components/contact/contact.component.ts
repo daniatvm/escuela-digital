@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { School } from 'src/app/models/school';
+import { SchoolService } from 'src/app/services/school.service';
 
 @Component({
   selector: 'app-contact',
@@ -10,10 +11,13 @@ export class ContactComponent implements OnInit {
 
   school: School;
 
-  constructor() { }
+  map: any;
+
+
+  constructor(private schoolService: SchoolService) { }
   /* esto es para dar la ubicación exacta de la escuela*/
-  lat:Number;
-  lng:Number;
+  lat: Number = 0;
+  lng: Number = 0;
   ngOnInit() {
     this.getSchool();
   }
@@ -22,19 +26,35 @@ export class ContactComponent implements OnInit {
      * Use a service to get school info.
      */
   getSchool() {
-    this.school = {
-      name: 'Escuela República Dominicana',
-      description: 'La escuela es una de las instituciones más importantes en la vida de una persona, quizás también una de las primordiales luego de la familia, ya que en la actualidad se supone que el niño se integra a ella desde sus años tempranos para finalizarla normalmente cerca de su adultez. Si bien puede haber variantes en sus denominaciones, la escuela primaria y secundaria es la base de la educación de cualquier individuo.',
-      lat: 9.911337,
-      lng: -84.056983,
-      address: 'San Francisco de dos Ríos.',
-      image: '',
-      email: 'escuelarepublicadominicana@yahoo.es',
-      telephone: '2536-5145'
-    }
-    this.lat = this.school.lat;
-    this.lng = this.school.lng;
+    this.schoolService.getSchool().subscribe(
+      res => {
+        let r: any = res;
+        if (r.success) {
+          this.school = r.data[0];
+          this.lat = this.school.lat;
+          this.lng = this.school.lng;
+          this.centerMapOnMarker();
+        } else {
+          console.log('No hay escuela');
+        }
+      },
+      err => {
+        console.log(err);
+        console.log('Error con laravel');
+      }
+    );
 
+
+  }
+
+  mapReady(map) {
+    this.map = map;
+  }
+
+  centerMapOnMarker() {
+    let a = { lat: this.lat, lng: this.lng };
+    if (this.map)
+      this.map.setCenter(a);
   }
 
 }

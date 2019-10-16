@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { New } from 'src/app/models/new';
+import { Level } from 'src/app/models/level';
+import { ClassService } from 'src/app/services/class.service';
+import { FormBuilder } from '@angular/forms';
+import { Class } from 'src/app/models/class';
 
 @Component({
   selector: 'app-groups',
@@ -8,16 +12,56 @@ import { New } from 'src/app/models/new';
 })
 export class GroupsComponent implements OnInit {
 
-  profesor: string = "profesor";
 
   news: New[];
 
-  constructor() { }
+  levels: Level[];
+  levelSelect: Level;
+
+  classes: Class[];
+  classSelect: Class;
+
+  constructor(private classServices: ClassService,private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.loadLevels();
+    this.loadClasses();
     this.getNews();
   }
 
+  loadLevels() {
+    this.classServices.getLevels().subscribe(
+      res => {
+        var r: any = res;
+        if (r.success) {
+          this.levels = r.data;
+        } else {
+          console.log('No hay niveles creados');
+        }
+      },
+      err => {
+        console.log(err);
+        console.log('Error con laravel');
+      }
+    );
+  }
+
+  loadClasses() {
+    this.classServices.getClasses().subscribe(
+      res => {
+        var r: any = res;
+        if (r.success) {
+          this.classes = r.data;
+        } else {
+          console.log('No hay clases creadas');
+        }
+      },
+      err => {
+        console.log(err);
+        console.log('Error con laravel');
+      }
+    );
+  }
 
   /**
     * Use a service to get news.
@@ -61,10 +105,5 @@ export class GroupsComponent implements OnInit {
     ];
 
   }
-
-  foo() {
-    this.profesor = "juan"
-  }
-
 
 }

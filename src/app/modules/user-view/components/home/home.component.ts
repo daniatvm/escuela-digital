@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { New } from 'src/app/models/new';
 import { School } from 'src/app/models/school';
+import { SchoolService } from 'src/app/services/school.service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit {
   school: School;
 
 
-  constructor() { }
+  constructor(private schoolService:SchoolService) { }
 
   ngOnInit() {
     this.getNews();
@@ -48,16 +49,20 @@ export class HomeComponent implements OnInit {
      * Use a service to get school info.
      */
   getSchool() {
-    this.school = {
-      name: 'Escuela República Dominicana',
-      description: 'La escuela es una de las instituciones más importantes en la vida de una persona, quizás también una de las primordiales luego de la familia, ya que en la actualidad se supone que el niño se integra a ella desde sus años tempranos para finalizarla normalmente cerca de su adultez. Si bien puede haber variantes en sus denominaciones, la escuela primaria y secundaria es la base de la educación de cualquier individuo.',
-      lat: 9.911337,
-      lng: -84.056983,
-      address: 'San Francisco de dos Ríos.',
-      image: '',
-      email: 'escuelarepublicadominicana@yahoo.es',
-      telephone: '2536-5145'
-    }
+    this.schoolService.getSchool().subscribe(
+      res => {
+        let r :any = res;
+        if(r.success){
+          this.school = r.data[0];
+        }else{
+          console.log('No hay escuela');
+        }
+      },
+      err => {
+        console.log(err);
+        console.log('Error con laravel');
+      }
+    );
   }
 
 }

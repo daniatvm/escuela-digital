@@ -4,6 +4,7 @@ import { EmployeeService } from 'src/app/services/employee.service';
 import { Job } from 'src/app/models/job';
 import { Access } from 'src/app/models/access';
 import { Employee } from 'src/app/models/employee';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-employee',
@@ -21,7 +22,7 @@ export class CreateEmployeeComponent implements OnInit {
   accesses: Access[];
   accessSelect: Access;
 
-  constructor(private formBuilder: FormBuilder, private employeeService: EmployeeService) { }
+  constructor(private formBuilder: FormBuilder, private employeeService: EmployeeService,private router: Router) { }
 
   ngOnInit() {
     this.loadJobs();
@@ -36,15 +37,6 @@ export class CreateEmployeeComponent implements OnInit {
       id_card: ['', [Validators.required]]
     });
   }
-
-  /*onChange(e) {
-    console.log(e);
-    console.log(this.employeeForm.value.job.id_job);
-  }
-  onChange2(e) {
-    console.log(e);
-    console.log(this.employeeForm.value.access.id_access_type);
-  }*/
 
   createEmployee() {
     this.submitted = true;
@@ -75,10 +67,15 @@ export class CreateEmployeeComponent implements OnInit {
             this.employeeService.createUser(user).subscribe(
               res => {
                 console.log(res);
-                //hacer algo cuando creo el user
+                let response: any = res;
+                if (response.success) {
+                  this.router.navigate(['/','admin','empleados']);
+                } else {
+                  console.log('error laravel user');
+                }
               },
               err => {
-                console.log('error laravel');
+                console.log('Error con laravel al crear user');
               }
             );
           } else {
@@ -87,7 +84,7 @@ export class CreateEmployeeComponent implements OnInit {
 
         },
         err => {
-          console.log('error laravel');
+          console.log('Error con laravel al crear employee');
         }
       );
     }
@@ -104,10 +101,8 @@ export class CreateEmployeeComponent implements OnInit {
         if (r.success) {
           this.jobs = r.data;
           this.jobSelected = this.jobs[0];
-          //console.log(this.jobs);
-          //console.log(this.jobSelected);
         } else {
-          console.log('Erro de laravel');
+          console.log('No hay jobs');
         }
 
       },
@@ -125,10 +120,8 @@ export class CreateEmployeeComponent implements OnInit {
         if (r.success) {
           this.accesses = r.data;
           this.accessSelect = this.accesses[0];
-          //console.log(this.accesses);
-          //console.log(this.accessSelect);
         } else {
-          console.log('Erro de laravel');
+          console.log('No hay access');
         }
 
       },

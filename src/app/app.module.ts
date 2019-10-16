@@ -12,6 +12,7 @@ import { LoginService } from './services/login.service';
 import { SchoolService } from './services/school.service';
 import { EmployeeService } from './services/employee.service';
 import { ClassService } from './services/class.service';
+import { FeedbackService } from './services/feedback.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ClassService } from './services/class.service';
     LoginService,
     SchoolService,
     EmployeeService,
-    ClassService
+    ClassService,
+    FeedbackService
   ],
   bootstrap: [AppComponent]
 })

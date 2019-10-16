@@ -65,6 +65,7 @@ ng g service services/login --skipTests=true
 ng g service services/school --skipTests=true
 ng g service services/employee --skipTests=true
 ng g service services/class --skipTests=true
+ng g service services/feedback --skipTests=true
 
 ng g guard guards/admin
 

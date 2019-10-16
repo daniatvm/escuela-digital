@@ -51,14 +51,14 @@ export class EmployeesCrudComponent implements OnInit {
             let r: any = res;
             if (r.success) {
               this.employees = r.data;
-              console.log(this.employees);
             } else {
-              console.log('error laravel')
+              this.employees = [];
             }
 
           },
           err => {
             console.log(err);
+            console.log('error de laravel');
           }
         )
     }
