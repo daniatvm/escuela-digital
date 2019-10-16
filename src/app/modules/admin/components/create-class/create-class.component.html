@@ -12,6 +12,28 @@
                     </select>
                 </div>
 
+                <!-- <div class="form-group">
+                    <select class="form-control custom-select" formControlName="job"
+                        [ngClass]="{ 'is-invalid': submitted && f.job.errors }">
+
+                        <option [ngValue]="null" disabled selected>Seleccione un puesto</option>
+                        <option [ngValue]="j" *ngFor="let j of jobs">{{j.name}}</option>
+
+                    </select>
+                </div> -->
+
+                <div class="form-group">
+                    <label class="font-weight-bold">Encargado:</label>
+                    <select class="form-control custom-select" formControlName="employee"
+                        [ngClass]="{ 'is-invalid': submitted && f.employee.errors }">
+
+                        <option [ngValue]="null" disabled selected>Seleccione:</option>
+                        <option [ngValue]="j" *ngFor="let j of employees">{{j.name}} {{j.last_name}} - {{j.id_card}}
+                        </option>
+
+                    </select>
+                </div>
+
                 <div class="form-group">
                     <label class="font-weight-bold">Nombre</label>
                     <input type="text" class="form-control" formControlName="name"

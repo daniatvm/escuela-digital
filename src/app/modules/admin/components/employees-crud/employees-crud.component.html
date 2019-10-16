@@ -31,9 +31,6 @@
         </div>
         <div class="col-9">
             <div class="row">
-                <div class="col-1">
-
-                </div>
                 <div class="col-2">
                     <h3>
                         Cedula
@@ -51,27 +48,33 @@
                 </div>
             </div>
             <hr>
-            <div class="row">
-                <div class="col-1">
+            <ng-template ngFor let-e [ngForOf]="employees">
+                <div class="row">
+                    <div class="col-2">
+                        {{e.id_card}}
+                    </div>
+                    <div class="col-2">
+                        <p class="text-uppercase">{{e.name}}</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="text-uppercase">{{e.last_name}}</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="text-uppercase">{{e.second_last_name}}</p>
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-success" [value]="e.id_employee"
+                            (click)="resetPassword($event.currentTarget)">Restablecer
+                            contraseña.</button>
+                    </div>
+                    <!-- <div class="col-2">
+                        <button class="btn btn-danger" [value]="e.id_employee"
+                            (click)="foo($event.currentTarget)">Eliminar.</button>
+                    </div> -->
+                </div>
+                <hr>
+            </ng-template>
 
-                </div>
-                <div class="col-2">
-                    121800047406
-                </div>
-                <div class="col-2">
-                    Luffy
-                </div>
-                <div class="col-2">
-                    Monkey
-                </div>
-                <div class="col-2">
-                    D
-                </div>
-                <div class="col-3">
-                    D
-                </div>
-            </div>
-            <hr>
 
         </div>
     </div>
