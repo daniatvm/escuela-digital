@@ -36,22 +36,21 @@ export class EmployeesCrudComponent implements OnInit {
 
   }
 
-
-
-
-
-  onChange(e) {
-    console.log(e);
-    //console.log(this.jobFilter.value.job.id_job);
-
-  }
-
   filterByJob() {
     this.submittedJob = true;
     if (this.jobFilter.invalid) {
       return;
     } else {
-      alert(`Filtrar por ${this.jobFilter.value.job.id_job}`)
+      this.employeeService.
+        getEmployeeByJob(this.jobFilter.value.job.id_job).
+          subscribe(
+            res => {
+              console.log(res);
+            },
+            err => {
+              console.log(err);
+            }
+          )
     }
   }
 
@@ -62,8 +61,6 @@ export class EmployeesCrudComponent implements OnInit {
         if (r.success) {
           this.jobs = r.data;
           this.jobSelected = this.jobs[0];
-          console.log(this.jobs);
-          console.log(this.jobSelected);
         } else {
           console.log('Erro de laravel');
         }

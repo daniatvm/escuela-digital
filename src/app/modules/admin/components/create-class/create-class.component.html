@@ -1,0 +1,28 @@
+<div class="container mt-3">
+    <div class="card">
+        <div class="card-body">
+            <form [formGroup]="classForm" (ngSubmit)="createClass()">
+
+                <div class="form-group">
+                    <label class="font-weight-bold">Nivel</label>
+                    <select class="form-control custom-select" formControlName="level"
+                        [ngClass]="{ 'is-invalid': submitted && f.level.errors }">
+                        <option [ngValue]="null" disabled selected>Seleccione un nivel</option>
+                        <option [ngValue]="j" *ngFor="let j of levels">{{j.name}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="font-weight-bold">Nombre</label>
+                    <input type="text" class="form-control" formControlName="name"
+                        [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                        <div *ngIf="f.name.errors.required">El nombre es necesario.</div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Crear clase</button>
+            </form>
+        </div>
+    </div>
+</div>

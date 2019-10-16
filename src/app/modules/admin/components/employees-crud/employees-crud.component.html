@@ -5,7 +5,7 @@
             <h6>Filtrar por puesto:</h6>
             <form [formGroup]="jobFilter" (ngSubmit)="filterByJob()">
                 <div class="form-group">
-                    <select class="form-control custom-select" formControlName="job" (change)="onChange($event)"
+                    <select class="form-control custom-select" formControlName="job"
                         [ngClass]="{ 'is-invalid': submittedJob && jobC.job.errors }">
 
                         <option [ngValue]="null" disabled selected>Seleccione un puesto</option>
@@ -22,14 +22,57 @@
             filtro por clase
             <button class="btn btn-success btn-block">Filtrar</button>
             <hr>
-            <button class="btn btn-success btn-block"
-                [routerLink]="['/','admin','job']">Crear nuevo
+            <button class="btn btn-success btn-block" [routerLink]="['/','admin','crear-puesto']">Crear nuevo
                 job</button>
-            <button class="btn btn-success btn-block">Crear nuevo empleado</button>
+            <button class="btn btn-success btn-block" [routerLink]="['/','admin','crear-empleado']">Crear nuevo
+                empleado</button>
             <hr>
 
         </div>
         <div class="col-9">
+            <div class="row">
+                <div class="col-1">
+
+                </div>
+                <div class="col-2">
+                    <h3>
+                        Cedula
+                    </h3>
+
+                </div>
+                <div class="col-2">
+                    Nombre
+                </div>
+                <div class="col-2">
+                    Primer Apellido
+                </div>
+                <div class="col-2">
+                    Segundo Apellido
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-1">
+
+                </div>
+                <div class="col-2">
+                    121800047406
+                </div>
+                <div class="col-2">
+                    Luffy
+                </div>
+                <div class="col-2">
+                    Monkey
+                </div>
+                <div class="col-2">
+                    D
+                </div>
+                <div class="col-3">
+                    D
+                </div>
+            </div>
+            <hr>
+
         </div>
     </div>
 </div>
