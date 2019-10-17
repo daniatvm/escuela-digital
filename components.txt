@@ -71,7 +71,9 @@ ng g service services/class --skipTests=true
 ng g service services/feedback --skipTests=true
 ng g service services/news --skipTests=true
 
+
 ng g guard guards/admin --skipTests=true
 ng g guard guards/professor --skipTests=true
-    
+ng g guard guards/supervisor --skipTests=true
+
 npm install @agm/core

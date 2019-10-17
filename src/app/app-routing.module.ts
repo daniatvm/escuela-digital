@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AdminGuard } from './guards/admin.guard';
 import { ProfessorGuard } from './guards/professor.guard';
+import { SupervisorGuard } from './guards/supervisor.guard';
+
 
 
 const routes: Routes = [
@@ -22,7 +24,8 @@ const routes: Routes = [
   },
   {
     path: 'supervisor',
-    loadChildren: () => import('./modules/supervisor/supervisor.module').then(m => m.SupervisorModule)
+    loadChildren: () => import('./modules/supervisor/supervisor.module').then(m => m.SupervisorModule),
+    canActivate: [SupervisorGuard]
   },
   {
     path: '**',
