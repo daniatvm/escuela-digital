@@ -19,8 +19,21 @@ export class ClassService {
     return this.http.post('http://localhost:8000/api/class/',data);
   }
 
-  getClasses(){
-    
+  getClasses(){    
     return this.http.get('http://localhost:8000/api/class/');
+  }
+
+  getClassByEmployee(id){
+    return this.http.get(`http://127.0.0.1:8000/api/class/by_employee/${id}`);
+  }
+  getClassByNotEmployee(id){
+    return this.http.get(`http://127.0.0.1:8000/api/class/by_not_employee/${id}`);
+  }
+
+  createClassXEmployee(data){
+    return this.http.post('http://localhost:8000/api/class_x_employee/',data);
+  }
+  removeClassXEmployee(id){
+    return this.http.delete(`http://127.0.0.1:8000/api/class_x_employee/${id}`);
   }
 }

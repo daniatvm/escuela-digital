@@ -8,6 +8,8 @@ import { CreateEmployeeComponent } from './components/create-employee/create-emp
 import { ClassCrudComponent } from './components/class-crud/class-crud.component';
 import { CreateLevelComponent } from './components/create-level/create-level.component';
 import { CreateClassComponent } from './components/create-class/create-class.component';
+import { EditEmployeeComponent } from './components/edit-employee/edit-employee.component';
+import { AdminSettingsComponent } from './components/admin-settings/admin-settings.component';
 
 
 const routes: Routes = [
@@ -38,6 +40,10 @@ const routes: Routes = [
           component: CreateEmployeeComponent
         },
         {
+          path: 'editar-empleado/:id_employee',
+          component: EditEmployeeComponent
+        },
+        {
           path: 'clases',
           component: ClassCrudComponent
         },
@@ -48,6 +54,10 @@ const routes: Routes = [
         {
           path:'crear-clases',
           component: CreateClassComponent
+        },
+        {
+          path:'ajustes',
+          component:AdminSettingsComponent
         }
       ]
   }

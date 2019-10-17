@@ -76,6 +76,11 @@
                             contraseña.</button>
                     </div>
 
+                    <div class="col-2 text-center">
+                        <button class="btn btn-success" [value]="e.id_employee"
+                            (click)="editEmployee($event.currentTarget)">Editar</button>
+                    </div>
+
                 </div>
                 <hr>
             </ng-template>

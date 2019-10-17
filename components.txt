@@ -32,9 +32,12 @@ ng g c modules/admin/components/admin-navigation --skipTests=true
 ng g c modules/admin/components/employees-crud --skipTests=true
 ng g c modules/admin/components/create-job --skipTests=true
 ng g c modules/admin/components/create-employee --skipTests=true
+ng g c modules/admin/components/edit-employee --skipTests=true
 ng g c modules/admin/components/class-crud --skipTests=true
 ng g c modules/admin/components/create-level --skipTests=true
 ng g c modules/admin/components/create-class --skipTests=true
+ng g c modules/admin/components/admin-settings --skipTests=true
+
 
 
 
