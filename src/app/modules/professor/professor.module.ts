@@ -7,16 +7,13 @@ import { CreateSpecificNewComponent } from './components/create-specific-new/cre
 import { MySpecificNewsComponent } from './components/my-specific-news/my-specific-news.component';
 import { ProfessorSettingsComponent } from './components/professor-settings/professor-settings.component';
 import { ProfessorNavigationComponent } from './components/professor-navigation/professor-navigation.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [ProfessorComponent, CreateSpecificNewComponent, MySpecificNewsComponent, ProfessorSettingsComponent, ProfessorNavigationComponent ],
   imports: [
     CommonModule,
-    ProfessorRoutingModule,
-    FormsModule,
-    ReactiveFormsModule
+    ProfessorRoutingModule
   ]
 })
 export class ProfessorModule { }

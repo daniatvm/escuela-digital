@@ -46,6 +46,19 @@ export class LoginComponent implements OnInit {
             if (data.id_access_type == 1) {
               this.loginServices.saveLocal(data);
               this.router.navigate(['admin']);
+            } else {
+              if (data.id_access_type == 2) {
+                this.loginServices.saveLocal(data);
+                this.router.navigate(['professor']);
+              } else {
+                if (data.id_access_type == 3) {
+                  this.loginServices.saveLocal(data);
+                  this.router.navigate(['supervisor']);
+                } else {
+                  alert('Sin acceso');
+                }
+
+              }
             }
           } else {
             alert('Credenciales incorrectas');

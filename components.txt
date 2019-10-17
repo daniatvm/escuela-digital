@@ -70,6 +70,7 @@ ng g service services/employee --skipTests=true
 ng g service services/class --skipTests=true
 ng g service services/feedback --skipTests=true
 
-ng g guard guards/admin
-
+ng g guard guards/admin --skipTests=true
+ng g guard guards/professor --skipTests=true
+    
 npm install @agm/core
