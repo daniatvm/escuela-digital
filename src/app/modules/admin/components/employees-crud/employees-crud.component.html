@@ -1,76 +1,86 @@
 <div class="container-fluid mt-2 mx-2">
     <div class="row">
-        <div class="col-3">
-            <hr>
-            <h6>Filtrar por puesto:</h6>
-            <form [formGroup]="jobFilter" (ngSubmit)="filterByJob()">
-                <div class="form-group">
-                    <select class="form-control custom-select" formControlName="job"
-                        [ngClass]="{ 'is-invalid': submittedJob && jobC.job.errors }">
+        <div class="col-3 mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <hr>
+                    <h6>Filtrar por puesto:</h6>
+                    <form [formGroup]="jobFilter" (ngSubmit)="filterByJob()">
+                        <div class="form-group">
+                            <select class="form-control custom-select" formControlName="job"
+                                [ngClass]="{ 'is-invalid': submittedJob && jobC.job.errors }">
 
-                        <option [ngValue]="null" disabled selected>Seleccione un puesto</option>
-                        <option [ngValue]="j" *ngFor="let j of jobs">{{j.name}}</option>
+                                <option [ngValue]="null" disabled selected>Seleccione un puesto</option>
+                                <option [ngValue]="j" *ngFor="let j of jobs">{{j.name}}</option>
 
-                    </select>
+                            </select>
+                        </div>
+
+                        <button type=" submit" class="btn btn-info btn-block">Filtrar</button>
+                    </form>
+                    <hr>
+                    <hr>
+                    <button class="btn btn-info btn-block" [routerLink]="['/','admin','crear-puesto']">Crear nuevo
+                        puesto</button>
+                    <button class="btn btn-info btn-block" [routerLink]="['/','admin','crear-empleado']">Crear nuevo
+                        empleado</button>
+                    <hr>
+
                 </div>
-
-                <button type=" submit" class="btn btn-success btn-block">Filtrar</button>
-            </form>
-
-
-            <hr>
-            filtro por clase
-            <button class="btn btn-success btn-block">Filtrar</button>
-            <hr>
-            <button class="btn btn-success btn-block" [routerLink]="['/','admin','crear-puesto']">Crear nuevo
-                job</button>
-            <button class="btn btn-success btn-block" [routerLink]="['/','admin','crear-empleado']">Crear nuevo
-                empleado</button>
-            <hr>
-
+            </div>
         </div>
-        <div class="col-9">
+        <div class="col-9 mt-2">
             <div class="row">
-                <div class="col-2">
-                    <h3>
+                <div class="col-2 text-center">
+                    <h4>
                         Cedula
-                    </h3>
+                    </h4>
 
                 </div>
-                <div class="col-2">
-                    Nombre
+                <div class="col-2 text-center">
+                    <h4>
+                        Nombre
+                    </h4>
                 </div>
-                <div class="col-2">
-                    Primer Apellido
+                <div class="col-2 text-center">
+                    <h4>
+                        Primer Apellido
+                    </h4>
+
                 </div>
-                <div class="col-2">
-                    Segundo Apellido
+                <div class="col-2 text-center">
+                    <h4>
+                        Segundo Apellido
+                    </h4>
+
                 </div>
             </div>
             <hr>
             <ng-template ngFor let-e [ngForOf]="employees">
                 <div class="row">
-                    <div class="col-2">
+                    <div class="col-2 text-center">
                         {{e.id_card}}
                     </div>
-                    <div class="col-2">
-                        <p class="text-uppercase">{{e.name}}</p>
+                    <div class="col-2 text-center">
+                        <p class="text-capitalize">{{e.name}}</p>
                     </div>
-                    <div class="col-2">
-                        <p class="text-uppercase">{{e.last_name}}</p>
+                    <div class="col-2 text-center">
+                        <p class="text-capitalize">{{e.last_name}}</p>
                     </div>
-                    <div class="col-2">
-                        <p class="text-uppercase">{{e.second_last_name}}</p>
+                    <div class="col-2 text-center">
+                        <p class="text-capitalize">{{e.second_last_name}}</p>
                     </div>
-                    <div class="col-2">
+                    <div class="col-2 text-center">
                         <button class="btn btn-success" [value]="e.id_employee"
                             (click)="resetPassword($event.currentTarget)">Restablecer
                             contraseña.</button>
                     </div>
-                    <!-- <div class="col-2">
-                        <button class="btn btn-danger" [value]="e.id_employee"
-                            (click)="foo($event.currentTarget)">Eliminar.</button>
-                    </div> -->
+
+                    <div class="col-2 text-center">
+                        <button class="btn btn-success" [value]="e.id_employee"
+                            (click)="editEmployee($event.currentTarget)">Editar</button>
+                    </div>
+
                 </div>
                 <hr>
             </ng-template>

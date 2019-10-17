@@ -6,7 +6,7 @@
             </div>
             <div class="container mt-2">
                 <div class="w-100 border border-dark">
-                    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="18">
+                    <agm-map (mapReady)="mapReady($event)" [latitude]="lat" [longitude]="lng" [zoom]="18">
                         <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
                     </agm-map>
                 </div>

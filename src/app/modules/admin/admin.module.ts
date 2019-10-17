@@ -14,11 +14,13 @@ import { CreateEmployeeComponent } from './components/create-employee/create-emp
 import { ClassCrudComponent } from './components/class-crud/class-crud.component';
 import { CreateLevelComponent } from './components/create-level/create-level.component';
 import { CreateClassComponent } from './components/create-class/create-class.component';
+import { EditEmployeeComponent } from './components/edit-employee/edit-employee.component';
+import { AdminSettingsComponent } from './components/admin-settings/admin-settings.component';
 
 
 
 @NgModule({
-  declarations: [AdminComponent, UpdateSchoolComponent, AdminNavigationComponent, EmployeesCrudComponent, CreateJobComponent, CreateEmployeeComponent, ClassCrudComponent, CreateLevelComponent, CreateClassComponent],
+  declarations: [AdminComponent, UpdateSchoolComponent, AdminNavigationComponent, EmployeesCrudComponent, CreateJobComponent, CreateEmployeeComponent, ClassCrudComponent, CreateLevelComponent, CreateClassComponent, EditEmployeeComponent, AdminSettingsComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

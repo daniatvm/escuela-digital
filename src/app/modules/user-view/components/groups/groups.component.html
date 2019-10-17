@@ -7,47 +7,31 @@
             </div>
             <br>
             <div class="card-body my-3">
-                <ul class="list-group ">
-                    <li class="list-group-item mb-4">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupSelect01">Nivel</label>
-                            </div>
+                <form>
+
+                    <div class="form-group">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text">Nivel</label>
+                            <select class="custom-select">
+                                <option [ngValue]="null" disabled selected>Seleccione un nivel</option>
+
+                                <option [ngValue]="j" *ngFor="let j of levels">{{j.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Clase</label>
                             <select class="custom-select" id="inputGroupSelect0">
-                                <option selected>Choose...</option>
-                                <option value="1">Primero</option>
-                                <option value="2">Segundo</option>
-                                <option value="3">Tercero</option>
+                                <option [ngValue]="null" disabled selected>Seleccione una clase</option>
+
+                                <option [ngValue]="j" *ngFor="let j of classes">{{j.name}}</option>
                             </select>
                         </div>
-                    </li>
-                    <li class="list-group-item mb-4">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupSelect01">Seccion</label>
-                            </div>
-                            <select class="custom-select" id="inputGroupSelect01">
-                                <option selected>Choose...</option>
-                                <option value="1">1-1</option>
-                                <option value="2">2-1</option>
-                                <option value="3">3-1</option>
-                            </select>
-                        </div>
-                    </li>
-                    <fieldset disabled>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Profesor líder</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="{{profesor}}">
-                        </div>
-                    </fieldset>
-
-
-                </ul>
-                <br>
-                <button class="btn btn-primary btn-block mt-3" (click)="foo()">Filtrar</button>
+                    </div>
+                    <button class="btn btn-primary btn-block mt-3" type="submit">Filtrar</button>
+                </form>
             </div>
-            <div class="card-footer"><br></div>
         </div>
 
 

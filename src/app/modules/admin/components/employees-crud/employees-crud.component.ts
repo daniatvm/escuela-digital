@@ -4,6 +4,7 @@ import { Job } from 'src/app/models/job';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Level } from 'src/app/models/level';
 import { Employee } from 'src/app/models/employee';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employees-crud',
@@ -28,7 +29,7 @@ export class EmployeesCrudComponent implements OnInit {
   submittedClass: boolean = false;
 
 
-  constructor(private employeeService: EmployeeService, private formBuilder: FormBuilder) { }
+  constructor(private employeeService: EmployeeService, private formBuilder: FormBuilder, private router:Router) { }
 
   ngOnInit() {
     this.loadJobs();
@@ -51,14 +52,14 @@ export class EmployeesCrudComponent implements OnInit {
             let r: any = res;
             if (r.success) {
               this.employees = r.data;
-              console.log(this.employees);
             } else {
-              console.log('error laravel')
+              this.employees = [];
             }
 
           },
           err => {
             console.log(err);
+            console.log('error de laravel');
           }
         )
     }
@@ -105,6 +106,10 @@ export class EmployeesCrudComponent implements OnInit {
         console.log('Erro con laravel');
       }
     );
+  }
+
+  editEmployee(e){
+    this.router.navigate(['/','admin','editar-empleado',`${e.value}`]);
   }
 
   foo(ele) {

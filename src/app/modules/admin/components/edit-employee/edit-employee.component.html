@@ -1,0 +1,39 @@
+<div class="container">
+    <div *ngIf="employee" class="card mt-2 w-50 mx-auto">
+        <div class="card-body">
+            <p class="card-title text-capitalize h4">{{employee.name}} {{employee.last_name}}
+                {{employee.second_last_name}}</p>
+            <p class="h5">Cedula: {{employee.id_card}}</p>
+            {{employee.image}}
+
+
+            <form [formGroup]="removeClass" (ngSubmit)="remove()">
+                <div class="form-group">
+                    <label class="font-weight-bold">Remover clase:</label>
+                    <select class="form-control custom-select" formControlName="class"
+                        [ngClass]="{ 'is-invalid': removeS && f.class.errors }">
+                        <option [ngValue]="null" disabled selected>Seleccione:</option>
+                        <option [ngValue]="j" *ngFor="let j of ownClasses">{{j.name}}</option>
+                    </select>
+                </div>
+                <button class="btn btn-success">Remover</button>
+            </form>
+
+
+            <form [formGroup]="addClass" (ngSubmit)="add()">
+
+                <div class="form-group">
+                    <label class="font-weight-bold">Agregar clase:</label>
+                    <select class="form-control custom-select" formControlName="class"
+                        [ngClass]="{ 'is-invalid': addS && g.class.errors }">
+                        <option [ngValue]="null" disabled selected>Seleccione:</option>
+                        <option [ngValue]="j" *ngFor="let j of notOwnClasses">{{j.name}}</option>
+                    </select>
+                </div>
+                <button class="btn btn-success">Agregar</button>
+            </form>
+
+
+        </div>
+    </div>
+</div>
