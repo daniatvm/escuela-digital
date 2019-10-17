@@ -7,6 +7,7 @@ import { CreateGeneralNewComponent } from './components/create-general-new/creat
 import { MyGeneralNewsComponent } from './components/my-general-news/my-general-news.component';
 import { SupervisorSettingsComponent } from './components/supervisor-settings/supervisor-settings.component';
 import { SupervisorNavigationComponent } from './components/supervisor-navigation/supervisor-navigation.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 
@@ -14,7 +15,9 @@ import { SupervisorNavigationComponent } from './components/supervisor-navigatio
   declarations: [SupervisorComponent, CreateGeneralNewComponent, MyGeneralNewsComponent, SupervisorSettingsComponent, SupervisorNavigationComponent ],
   imports: [
     CommonModule,
-    SupervisorRoutingModule
+    SupervisorRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class SupervisorModule { }
