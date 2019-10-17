@@ -13,6 +13,7 @@ import { SchoolService } from './services/school.service';
 import { EmployeeService } from './services/employee.service';
 import { ClassService } from './services/class.service';
 import { FeedbackService } from './services/feedback.service';
+import { NewsService } from './services/news.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { FeedbackService } from './services/feedback.service';
     SchoolService,
     EmployeeService,
     ClassService,
-    FeedbackService
+    FeedbackService,
+    NewsService
   ],
   bootstrap: [AppComponent]
 })
