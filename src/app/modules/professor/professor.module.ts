@@ -7,7 +7,7 @@ import { CreateSpecificNewComponent } from './components/create-specific-new/cre
 import { MySpecificNewsComponent } from './components/my-specific-news/my-specific-news.component';
 import { ProfessorSettingsComponent } from './components/professor-settings/professor-settings.component';
 import { ProfessorNavigationComponent } from './components/professor-navigation/professor-navigation.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,8 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ProfessorRoutingModule,
-    FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class ProfessorModule { }

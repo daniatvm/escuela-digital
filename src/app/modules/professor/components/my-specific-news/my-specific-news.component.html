@@ -1,1 +1,35 @@
-<p>my-specific-news works!</p>
+<div class="container-fluid mt-2">
+    <div class="row">
+
+        <div class="col-3 mt-2">
+
+            <div class="card">
+                <div class="card-body">
+                    <form [formGroup]="filterForm" (ngSubmit)="filter()">
+
+                        <div class="form-group">
+                            <label>Clase</label>
+                            <select class="form-control custom-select" formControlName="class"
+                                [ngClass]="{ 'is-invalid': submitted && f.class.errors }">
+                                <option [ngValue]="null" disabled selected>Seleccione:</option>
+                                <option [ngValue]="j" *ngFor="let j of ownClasses">{{j.name}}</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-info btn-block">Filtrar</button>
+
+                    </form>
+                    <hr>
+                    <button [routerLink]="['/','professor','crear-noticia']" class="btn btn-info btn-block">Crear
+                        Noticia</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-9 mt-2">
+            <h1 *ngFor="let n of news">{{n.title}}</h1>
+        </div>
+
+    </div>
+</div>

@@ -1,138 +1,35 @@
-<div class="container-fluid px-3">
-    <div class="my-4 mx-4">
-        <form [formGroup]="formCreate" (ngSubmit)="create()">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                    <div class="form-group"> 
-                        <select class="form-control custom-select" formControlName="level" (change)="onChange($event)"
-                            [ngClass]="{ 'is-invalid': submitted && f.level.errors }">
-
-                            <option [ngValue]="null" disabled selected>Seleccione un nivel</option>
-                            <option [ngValue]="l" *ngFor="let l of levels">{{l.name}}</option>
-
-                        </select>
-                        <div *ngIf="submitted && f.level.errors" class="invalid-feedback">
-                            <div *ngIf="f.level.errors.required">Seleccione un nivel</div>
-                        </div>
-                    </div>
+<div class="container mt-2">
+    <div class="card mt-2">
+        <div class="card-body">
+            <form [formGroup]="createForm" (ngSubmit)="create()">
+                <div class="form-group">
+                    <label>Titulo</label>
+                    <input class="form-control" type="text" formControlName="title"
+                        [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                    <div class="form-group">
-                        <select class="form-control custom-select" formControlName="class"
-                            [ngClass]="{ 'is-invalid': submitted && f.class.errors }">
-
-                            <option [ngValue]="null" disabled>Seleccione una clase</option>
-                            <option [ngValue]="l" *ngFor="let l of classFilter">
-                                {{l.name}}
-                            </option>
-
-                        </select>
-                        <div *ngIf="submitted && f.class.errors" class="invalid-feedback">
-                            <div *ngIf="f.class.errors.required">Seleccione un Clase</div>
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <label>Descripcion</label>
+                    <textarea class="form-control" type="text" formControlName="description"
+                        [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
                 </div>
 
-
-
-                <div class="col-12">
-                    <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Title" formControlName="title"
-                            [ngClass]="{'is-invalid': submitted && f.title.errors}">
-                        <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
-                            <div *ngIf="f.title.errors.required">Es necesario el titulo.</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Example textarea</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="form-group">
-                        <label class="font-weight-bold">Foto</label>
-                        <input type="file" class="form-control-file form-control" accept='image/*'>
-                        <!-- <input #file type="file" class="form-control-file form-control-md" accept='image/*'
-                                    (change)="preview(file.files)" [ngClass]="{ 'text-danger': submitted && f.photo.errors }"
-                                    formControlName="photo">
-                                <small class="text-danger" *ngIf="message">{{message}}</small>
-                                <div *ngIf="submitted && f.photo.errors" class="text-danger">
-                                    <small *ngIf="f.photo.errors.required">Se debe subir una imagen.</small>
-                                </div> -->
-                    </div>
-
+                <div class="form-group">
+                    <label>Clase</label>
+                    <select class="form-control custom-select" formControlName="class"
+                        [ngClass]="{ 'is-invalid': submitted && f.class.errors }">
+                        <option [ngValue]="null" disabled selected>Seleccione:</option>
+                        <option [ngValue]="j" *ngFor="let j of ownClasses">{{j.name}}</option>
+                    </select>
                 </div>
 
-            </div>
-
-            <button class="btn btn-outline-primary btn-block">Crear</button>
-        </form>
-    </div>
-    <div class="row mt-3">
-        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-            <form>
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                    <div class="row">
-                        <div class="form-group">
-                            <label for="">Level</label>
-
-                            <select class="form-control" [(ngModel)]="selectedLevel"
-                                [ngModelOptions]="{standalone: true}">
-                                <option [ngValue]="l" *ngFor="let l of levels">{{l.name}}</option>
-                            </select>
-
-
-                            <!-- <select class="form-control" [(ngModel)]="selectedLevel" (change)="onChange($event)">
-                                <option value="1">a</option>
-                                <option value="2">b</option>
-                                <option value="3">c</option>
-                            </select> -->
-
-
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                        <div class="form-group">
-                            <label for="">Seccion</label>
-                            <select class="form-control">
-                                <option>Small select</option>
-                            </select>
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <label>Imagen</label>
+                    <input class="form-control" type="text" formControlName="image"
+                        [ngClass]="{ 'is-invalid': submitted && f.image.errors }">
                 </div>
 
+                <button class="btn btn-primary">Crear</button>
             </form>
         </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 ">
-            <div class="container-fluid overflow-auto pt-2">
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <h4 class="card-title text-capitalize"> new.title </h4>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-title text-muted">Sección: <span> new.class_name</span>
-                        </p>
-                        <h5 class="card-title">
-                            Publicado por: <span class="text-capitalize"> new.created_by </span>
-                        </h5>
-                        <p class="card-text">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis eaque est adipisci natus,
-                        </p>
-                        <div class="pic_holder mb-3">
-                            <img src="https://2.bp.blogspot.com/-yf16cM8g1h8/WRJOUvNQpEI/AAAAAAAAA1g/ve_c0lu62GgIzACs7IyU55kK46oGsFtTQCLcB/s1600/latam_nohayclases-1.jpg"
-                                class="card-img-top">
-                        </div>
-                    </div>
-
-                    <div class="card-footer text-right">
-                        <small class="form-text text-muted "> new.date </small>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-
 </div>
