@@ -1,6 +1,6 @@
 <div class="row mt-3 mb-5 mx-3">
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center first_col">
-        <div class="card mt-3">
+        <div *ngIf="school" class="card mt-3">
             <div class="card-header">
                 <h2 class="card-title"> {{school.name}} </h2>
             </div>
@@ -15,9 +15,10 @@
                 <p class="card-text text-muted">
                     Correo: {{school.email}}
                 </p>
-                <p class="card-text text-muted">
+                <a href="../../../../../assets/TÉRMINOS Y CONDICIONES.pdf" target="_blank">Términos y Condiciones.</a>
+                <!-- <p class="card-text text-muted">
                     imagen: {{school.image}}
-                </p>
+                </p> -->
             </div>
         </div>
     </div>
@@ -33,7 +34,10 @@
                     <p class="card-text text-justify mb-3"> {{new.description}} </p>
                 </div>
                 <div class="pic_holder mb-3">
-                    <img [src]="new.image" class="card-img-top">
+
+                    <img class="card-img-top" [src]="new.image"
+                        onError="this.src='https://pngimage.net/wp-content/uploads/2018/06/image-not-found-png-6-300x200.png';">
+
                 </div>
                 <div class="card-footer text-right">
                     <small class="form-text text-muted ">

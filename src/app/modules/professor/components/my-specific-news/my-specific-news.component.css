@@ -1,0 +1,26 @@
+.first-col {
+    height: 72vh;
+    min-height: 600px;
+}
+
+.second_col {
+    height: 82vh;
+}
+
+.in_second_col {
+    height: 78vh;
+}
+
+.card1{
+    padding-bottom: 3vmin;
+}
+
+.pic_holder img{
+    padding:0;
+    display: block;
+    margin: auto;
+    width: auto;
+    height: auto;
+    max-height: 50vmin;
+    max-width: 50vmin;
+}

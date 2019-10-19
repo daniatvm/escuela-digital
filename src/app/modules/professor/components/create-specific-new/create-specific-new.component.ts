@@ -4,6 +4,7 @@ import { ClassService } from 'src/app/services/class.service';
 import { LoginService } from 'src/app/services/login.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NewsService } from 'src/app/services/news.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-specific-new',
@@ -21,7 +22,7 @@ export class CreateSpecificNewComponent implements OnInit {
   constructor(private classService: ClassService,
     private loginService: LoginService,
     private formBuilder: FormBuilder,
-    private newsService: NewsService) { }
+    private newsService: NewsService,private router:Router) { }
 
   ngOnInit() {
     this.loadClasses();
@@ -65,7 +66,7 @@ export class CreateSpecificNewComponent implements OnInit {
         id_class: this.createForm.value.class.id_class,
         title: this.createForm.value.title,
         description: this.createForm.value.description,
-        date:`${d.getFullYear()}-${d.getMonth()}-${d.getDay()}`,
+        date:`${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`,
         image: this.createForm.value.image
       }
       this.newsService.createNew(data).subscribe(
@@ -73,8 +74,9 @@ export class CreateSpecificNewComponent implements OnInit {
           let r:any = res;
           if(r.success){
             alert('Se creo la noticia');
+            this.router.navigate(['/','professor','mis-noticias']);
           }else{
-            alert('Caca malo ');
+            alert('Fallo la creacion');
           }
         },
         err => {

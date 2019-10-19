@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { New } from 'src/app/models/new';
 import { Level } from 'src/app/models/level';
 import { ClassService } from 'src/app/services/class.service';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Class } from 'src/app/models/class';
+import { NewsService } from 'src/app/services/news.service';
 
 @Component({
   selector: 'app-groups',
@@ -19,14 +20,22 @@ export class GroupsComponent implements OnInit {
   levelSelect: Level;
 
   classes: Class[];
+  classFilter: Class[];
   classSelect: Class;
 
-  constructor(private classServices: ClassService,private formBuilder: FormBuilder) { }
+  filterForm: FormGroup;
+  submitted: boolean = false;
+  constructor(private classServices: ClassService, private formBuilder: FormBuilder, private newsService: NewsService) { }
 
   ngOnInit() {
     this.loadLevels();
     this.loadClasses();
-    this.getNews();
+    this.getNews2();
+    this.filterForm = this.formBuilder.group({
+      level: [null, [Validators.required]],
+      class: [null, [Validators.required]],
+    })
+
   }
 
   loadLevels() {
@@ -47,6 +56,7 @@ export class GroupsComponent implements OnInit {
   }
 
   loadClasses() {
+
     this.classServices.getClasses().subscribe(
       res => {
         var r: any = res;
@@ -63,47 +73,71 @@ export class GroupsComponent implements OnInit {
     );
   }
 
+  onChange(e) {
+    console.log(e);
+    this.filterClasses(this.filterForm.value.level.id_level);
+    //console.log(this.formCreate.value.level);
+    //this.formCreate.value.level = null;
+  }
+
+  getNews2() {
+
+    this.newsService.getNewByNewType(1).subscribe(
+      res => {
+        let r: any = res;
+        if (r.success) {
+          this.news = r.data;
+        } else {
+          this.news = [];
+          console.log('No hay noticias');
+        }
+      },
+      err => {
+        console.log(err);
+        console.log('Error con laravel');
+      }
+    )
+  }
+
+  filterClasses(id_level) {
+
+    this.filterForm.patchValue({
+      class: null
+    });
+    this.classFilter = this.classes.filter(x => x.id_level == id_level);
+  }
+
   /**
     * Use a service to get news.
     */
   getNews() {
-    this.news = [
+    this.newsService.getNewByClass(this.filterForm.value.class.id_class).subscribe(
+      res => {
+        var r: any = res;
+        if (r.success) {
+          this.news = r.data;
+        } else {
+          console.log('No hay noticias creadas');
+        }
+      },
+      err => {
+        console.log(err);
+        console.log('Error con laravel');
+      }
+    );
+  }
 
-      {
-        id_new: 1,
-        id_class: 1,
-        id_user: 1,
-        class_name: '1-1',
-        created_by: 'Ana Vargas Vargas',
-        title: 'Se suspende clases para el 12 de Septiembre.',
-        description: "Por motivos de incapacidad los estudiantes no tendran clases.",
-        date: new Date,
-        image: 'https://2.bp.blogspot.com/-yf16cM8g1h8/WRJOUvNQpEI/AAAAAAAAA1g/ve_c0lu62GgIzACs7IyU55kK46oGsFtTQCLcB/s1600/latam_nohayclases-1.jpg'
-      },
-      {
-        id_new: 2,
-        id_class: 1,
-        id_user: 1,
-        class_name: '1-1',
-        created_by: 'Ana Vargas Vargas',
-        title: 'Reunión de padres',
-        description: "La reunión ser será el próximo lunes 16 de septiembre.",
-        date: new Date,
-        image: 'http://www.cadenamaxima.com.ar/cadmawp/wp-content/uploads/2019/04/2019-04-04_16-34-28_463984-columna-de-educacion-la-importancia-de-la-primer-reunion-de-padres-del-ano-768x400.jpg'
-      },
-      {
-        id_new: 3,
-        id_class: 1,
-        id_user: 1,
-        class_name: '1-1',
-        created_by: 'Ana Vargas Vargas',
-        title: 'aviso 3',
-        description: "en espera",
-        date: new Date,
-        image: 'http://www.cadenamaxima.com.ar/cadmawp/wp-content/uploads/2019/04/2019-04-04_16-34-28_463984-columna-de-educacion-la-importancia-de-la-primer-reunion-de-padres-del-ano-768x400.jpg'
-      },
-    ];
+  filter() {
+    this.submitted = true;
+    if (this.filterForm.invalid) {
+      return;
+    } else {
+      this.getNews();
+    }
+  }
 
+  get f() {
+    return this.filterForm.controls;
   }
 
 }

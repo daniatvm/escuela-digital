@@ -37,7 +37,8 @@ ng g c modules/admin/components/class-crud --skipTests=true
 ng g c modules/admin/components/create-level --skipTests=true
 ng g c modules/admin/components/create-class --skipTests=true
 ng g c modules/admin/components/admin-settings --skipTests=true
-
+ng g c modules/admin/components/edit-gallery --skipTests=true
+ng g c modules/admin/components/feedback-crud --skipTests=true
 
 
 
@@ -58,6 +59,7 @@ ng g interface models/school
 ng g interface models/level
 ng g interface models/job
 ng g interface models/access
+ng g interface models/gallery
 
 ng g c not-found --skipTests=true
 
@@ -70,6 +72,7 @@ ng g service services/employee --skipTests=true
 ng g service services/class --skipTests=true
 ng g service services/feedback --skipTests=true
 ng g service services/news --skipTests=true
+ng g service services/gallery --skipTests=true
 
 
 ng g guard guards/admin --skipTests=true

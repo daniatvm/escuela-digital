@@ -22,7 +22,9 @@ export class CreateEmployeeComponent implements OnInit {
   accesses: Access[];
   accessSelect: Access;
 
-  constructor(private formBuilder: FormBuilder, private employeeService: EmployeeService,private router: Router) { }
+  msg: string;
+
+  constructor(private formBuilder: FormBuilder, private employeeService: EmployeeService, private router: Router) { }
 
   ngOnInit() {
     this.loadJobs();
@@ -39,8 +41,10 @@ export class CreateEmployeeComponent implements OnInit {
   }
 
   createEmployee() {
+    this.msg = "";
     this.submitted = true;
     if (this.employeeForm.invalid) {
+      this.msg = "Hayr errores en la solicitud.";
       return;
     } else {
       var employee = {
@@ -69,22 +73,34 @@ export class CreateEmployeeComponent implements OnInit {
                 console.log(res);
                 let response: any = res;
                 if (response.success) {
-                  this.router.navigate(['/','admin','empleados']);
+                  //this.router.navigate(['/','admin','empleados']);
+                  this.msg = "Usuario creado exitosamente.";
+                  this.submitted = false;
+                  this.employeeForm.setValue({
+                    job: null,
+                    access: null,
+                    name: '',
+                    last_name: '',
+                    second_last_name: '',
+                    image: '',
+                    id_card: ''
+                  });
                 } else {
-                  console.log('error laravel user');
+                  this.msg = "Problemas con laravel creando usuario.";
                 }
               },
               err => {
-                console.log('Error con laravel al crear user');
+                this.msg = "Error con laravel al crear el usuario.";
               }
             );
           } else {
-            console.log('error laravel');
+            this.msg = "Error con laravel, creando el empleado/.";
+
           }
 
         },
         err => {
-          console.log('Error con laravel al crear employee');
+          this.msg = "Error con laravel al crear employee.";
         }
       );
     }

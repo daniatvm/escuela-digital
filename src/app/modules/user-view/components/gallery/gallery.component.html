@@ -8,11 +8,11 @@
         </ol>
         <div class="carousel-inner">
             <div class="div_holder">
-                <div class="carousel-item active pic_holder">
-                    <img [src]="firstImage.url" class="d-block w-100">
+                <div *ngIf="photo" class="carousel-item active pic_holder">
+                    <img [src]="photo.image" class="d-block w-100">
                 </div>
-                <div class="carousel-item pic_holder" *ngFor="let i of images">
-                    <img [src]="i.url" class="d-block w-100">
+                <div class="carousel-item pic_holder" *ngFor="let i of gallery">
+                    <img [src]="i.image" class="d-block w-100">
                 </div>
 
             </div>

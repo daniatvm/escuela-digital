@@ -78,7 +78,17 @@ export class FeedbackFormComponent implements OnInit {
         res => {
           let r: any = res;
           if (r.success) {
-            alert('Sugerencia enviada')
+            alert('Sugerencia enviada');
+            this.sugerenciaForm.setValue(
+              {
+                name: '',
+                phoneNumber: '',
+                email: '',
+                description: ''
+              }
+            );
+            this.submittedSugerencia = false;
+
           } else {
             console.log('Error al crear la sugerencia');
           }
@@ -91,6 +101,7 @@ export class FeedbackFormComponent implements OnInit {
     }
 
   }
+
   sendQuery() {
     this.submittedConsulta = true;
     if (this.consultaForm.invalid) {
@@ -108,7 +119,16 @@ export class FeedbackFormComponent implements OnInit {
         res => {
           let r: any = res;
           if (r.success) {
-            alert('Consulta enviada')
+            alert('Consulta enviada');
+            this.consultaForm.setValue(
+              {
+                name: '',
+                phoneNumber: '',
+                email: '',
+                description: ''
+              }
+            );
+            this.submittedConsulta = false;
           } else {
             console.log('Error al crear la consulta');
           }

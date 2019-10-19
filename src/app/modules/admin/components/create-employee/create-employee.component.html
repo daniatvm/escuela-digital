@@ -87,9 +87,14 @@
                 </div> -->
 
 
-                <button type="submit" class="btn btn-primary">Crear</button>
+                <button type="submit" class="btn btn-primary btn-block">Crear</button>
 
             </form>
+            <br>
+            <button [routerLink]="['/','admin','empleados']" class="btn btn-warning">Volver</button>
         </div>
+    </div>
+    <div *ngIf="submitted" class="alert alert-dismissible alert-light mt-3">
+        <h6>{{msg}}</h6>
     </div>
 </div>

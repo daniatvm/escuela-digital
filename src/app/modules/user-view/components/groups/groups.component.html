@@ -7,12 +7,12 @@
             </div>
             <br>
             <div class="card-body my-3">
-                <form>
-
+                <form [formGroup]="filterForm" (ngSubmit)="filter()">
                     <div class="form-group">
                         <div class="input-group-prepend">
                             <label class="input-group-text">Nivel</label>
-                            <select class="custom-select">
+                            <select class="custom-select" formControlName="level" (change)="onChange($event)"
+                                [ngClass]="{ 'is-invalid': submitted && f.level.errors }">
                                 <option [ngValue]="null" disabled selected>Seleccione un nivel</option>
 
                                 <option [ngValue]="j" *ngFor="let j of levels">{{j.name}}</option>
@@ -22,10 +22,11 @@
                     <div class="form-group">
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="inputGroupSelect01">Clase</label>
-                            <select class="custom-select" id="inputGroupSelect0">
+                            <select class="custom-select" formControlName="class"
+                                [ngClass]="{ 'is-invalid': submitted && f.class.errors }">
                                 <option [ngValue]="null" disabled selected>Seleccione una clase</option>
 
-                                <option [ngValue]="j" *ngFor="let j of classes">{{j.name}}</option>
+                                <option [ngValue]="j" *ngFor="let j of classFilter">{{j.name}}</option>
                             </select>
                         </div>
                     </div>
@@ -50,14 +51,17 @@
                     <p class="card-title text-muted">Sección: <span> {{new.class_name}}</span>
                     </p>
                     <h5 class="card-title">
-                        Publicado por: <span class="text-capitalize"> {{new.created_by}} </span>
+                        Publicado por: <span class="text-capitalize"> 
+                            {{new.name}} {{new.last_name}} {{new.second_last_name}}
+                        </span>
                     </h5>
                     <p class="card-text">
                         {{new.description}}
                     </p>
 
                     <div class="pic_holder mb-3">
-                        <img [src]="new.image" class="card-img-top">
+                        <img class="card-img-top" [src]="new.image"
+                            onError="this.src='https://pngimage.net/wp-content/uploads/2018/06/image-not-found-png-6-300x200.png';">
                     </div>
                 </div>
 

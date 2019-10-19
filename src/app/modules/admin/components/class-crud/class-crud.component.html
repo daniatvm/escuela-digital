@@ -6,21 +6,25 @@
             <form [formGroup]="filterLevel" (ngSubmit)="filter()">
 
                 <select class="form-group custom-select" formControlName="level"
-                [ngClass]="{ 'is-invalid': submitted && f.level.errors }">
+                    [ngClass]="{ 'is-invalid': submitted && f.level.errors }">
                     <option [ngValue]="null" disabled selected>Seleccione un nivel</option>
 
                     <option [ngValue]="j" *ngFor="let j of levels">{{j.name}}</option>
                 </select>
 
-            
-                <button class="btn btn-success btn-block">Filtrar</button>
+
+                <button class="btn btn-info btn-block">Filtrar</button>
 
             </form>
             <hr>
-            <button class="btn btn-success btn-block" [routerLink]="['/','admin','crear-nivel']">Crear nuevo
+            <button class="btn btn-info btn-block" [routerLink]="['/','admin','crear-nivel']">Crear nuevo
                 nivel</button>
-            <button class="btn btn-success btn-block" [routerLink]="['/','admin','crear-clases']">Crear nueva
+            <button class="btn btn-info btn-block" [routerLink]="['/','admin','crear-clases']">Crear nueva
                 clase</button>
+            <br><br>
+            <div *ngIf="submitted" class="alert alert-dismissible alert-light mt-3">
+                <h6>{{msg}}</h6>
+            </div>
         </div>
         <div class="col-9">
             <hr>

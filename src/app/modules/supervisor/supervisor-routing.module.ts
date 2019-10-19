@@ -21,7 +21,7 @@ const routes: Routes = [
         component:MyGeneralNewsComponent
       },
       {
-        path:'create-new',
+        path:'crear-noticia',
         component:CreateGeneralNewComponent
       },
       {

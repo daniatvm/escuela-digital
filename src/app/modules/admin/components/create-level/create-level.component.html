@@ -21,8 +21,12 @@
                 </div>
                 <button class="btn btn-primary btn-block">Crear</button>
             </form>
+            <br>
+            <button [routerLink]="['/','admin','clases']" class="btn btn-warning">Volver</button>
         </div>
 
     </div>
-
+    <div *ngIf="submitted" class="alert alert-dismissible alert-light mt-3">
+        <h6>{{msg}}</h6>
+    </div>
 </div>

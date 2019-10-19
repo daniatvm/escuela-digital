@@ -14,4 +14,7 @@ export class FeedbackService {
     return this.http.post('http://127.0.0.1:8000/api/feedback/', data);
   }
 
+  getFeedback(){
+    return this.http.get('http://localhost:8000/api/feedback');
+  }
 }

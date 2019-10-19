@@ -14,6 +14,7 @@ export class CreateLevelComponent implements OnInit {
   levelSelect: Level;
   submitted: boolean = false;
 
+  msg: string;
   levelForm: FormGroup;
 
   constructor(private classServices: ClassService, private formBuilder: FormBuilder) { }
@@ -27,9 +28,11 @@ export class CreateLevelComponent implements OnInit {
   }
 
   createLevel() {
+    this.msg = "";
     this.submitted = true;
 
     if (this.levelForm.invalid) {
+      this.msg = "Hay errores en la solicitud.";
       return;
     } else {
       let data: any = {
@@ -37,11 +40,14 @@ export class CreateLevelComponent implements OnInit {
       }
       this.classServices.createLevel(data).subscribe(
         res => {
-          let r:any = res;
-          if(r.success){
-            alert('Creado');
+          let r: any = res;
+          if (r.success) {
             this.loadLevels();
-          }else{
+            this.msg = "Nivel creado exitosamente.";
+            this.levelForm.setValue({
+              name: '.'
+            });
+          } else {
             console.log('Problema con la creacion');
           }
         },
@@ -71,7 +77,7 @@ export class CreateLevelComponent implements OnInit {
     );
   }
 
-  get f(){
+  get f() {
     return this.levelForm.controls;
   }
 }

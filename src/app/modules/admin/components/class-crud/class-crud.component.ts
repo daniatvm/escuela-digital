@@ -16,6 +16,8 @@ export class ClassCrudComponent implements OnInit {
 
   filterLevel: FormGroup;
 
+  msg: string;
+
   constructor(private classServices: ClassService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -25,11 +27,13 @@ export class ClassCrudComponent implements OnInit {
     });
   }
 
-  filter(){
+  filter() {
+    this.msg = "";
     this.submitted = true;
-    if(this.filterLevel.invalid){
+    if (this.filterLevel.invalid) {
+      this.msg = "Hay errores en la solicitud";
       return;
-    }else{
+    } else {
       alert(`filtrar por${this.filterLevel.value.level.id_level}`);
     }
   }
@@ -52,7 +56,7 @@ export class ClassCrudComponent implements OnInit {
   }
 
 
-  get f(){
+  get f() {
     return this.filterLevel.controls;
   }
 

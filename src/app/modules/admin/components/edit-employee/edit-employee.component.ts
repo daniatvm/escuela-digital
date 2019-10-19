@@ -134,6 +134,8 @@ export class EditEmployeeComponent implements OnInit {
           this.ownClasses = r.data;
           this.ownClass = this.ownClasses[0];
         } else {
+          this.ownClasses = [];
+          this.ownClass = null;
           console.log('No hay clases asociadas.');
         }
       },
@@ -150,6 +152,8 @@ export class EditEmployeeComponent implements OnInit {
           this.notOwnClasses = r.data;
           this.notOwnClass = this.notOwnClasses[0];
         } else {
+          this.notOwnClasses = [];
+          this.notOwnClass = null;
           console.log('No hay clases asociadas.');
         }
       },

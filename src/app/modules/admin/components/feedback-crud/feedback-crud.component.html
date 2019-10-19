@@ -1,0 +1,13 @@
+<div class="container mt-3">
+    <div *ngFor="let f of feed" class="card mb-3">
+        <div class="card-header">
+            <h3>Nombre: {{f.name}}</h3>
+        </div>
+        <div class="card-body">
+            <h6>Teléfono: {{f.cellphone}}</h6>
+            <h6>Correo: {{f.email}}</h6>
+            <p>Dijo: <br>{{f.feedback_text}}</p>
+        </div>
+        
+    </div>
+</div>

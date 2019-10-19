@@ -15,6 +15,8 @@ export class CreateJobComponent implements OnInit {
   jobSelected: Job;
   submitted: boolean = false;
 
+  msg:string;
+
   jobCreate: FormGroup;
 
   constructor(private router: Router,private employeeService: EmployeeService, private formBuilder: FormBuilder) { }
@@ -32,8 +34,10 @@ export class CreateJobComponent implements OnInit {
 
 
   createJob() {
+    this.msg = "";
     this.submitted = true;
     if (this.jobCreate.invalid) {
+      this.msg = "Hay errores en la solicitud";
       return;
     } else {
       var data = {
@@ -44,15 +48,14 @@ export class CreateJobComponent implements OnInit {
         res => {
           var r: any = res;
           if (r.success) {
-            this.router.navigate(['/','admin','empleados']);
+            this.msg = "Puesto creado.";
           } else {
-            r
-            console.log('Errores con laravel');
+            this.msg = "No se pudo crear el puesto.";
           }
         },
         err => {
+          this.msg = "No se contectar con laravel.";
           console.log(err);
-          console.log('Errores con laravel');
         }
       );
     }

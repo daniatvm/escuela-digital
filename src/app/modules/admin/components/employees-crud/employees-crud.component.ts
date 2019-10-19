@@ -18,6 +18,8 @@ export class EmployeesCrudComponent implements OnInit {
   jobFilter: FormGroup;
   submittedJob: boolean = false;
 
+  msg: string;
+
   /*levels: Level[];
   levelSelected: Level;
   levelFilter: FormGroup;*/
@@ -29,7 +31,7 @@ export class EmployeesCrudComponent implements OnInit {
   submittedClass: boolean = false;
 
 
-  constructor(private employeeService: EmployeeService, private formBuilder: FormBuilder, private router:Router) { }
+  constructor(private employeeService: EmployeeService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.loadJobs();
@@ -41,8 +43,10 @@ export class EmployeesCrudComponent implements OnInit {
   }
 
   filterByJob() {
+    this.msg = "";
     this.submittedJob = true;
     if (this.jobFilter.invalid) {
+      this.msg = "Errores en la solicitud.";
       return;
     } else {
       this.employeeService.
@@ -52,14 +56,16 @@ export class EmployeesCrudComponent implements OnInit {
             let r: any = res;
             if (r.success) {
               this.employees = r.data;
+              this.msg = "Consulta exitosa!";
             } else {
               this.employees = [];
+              this.msg = "No hay empleados creados para este puesto";
             }
 
           },
           err => {
+            this.msg = "Error en la coneccion con laravel.";
             console.log(err);
-            console.log('error de laravel');
           }
         )
     }
@@ -89,32 +95,27 @@ export class EmployeesCrudComponent implements OnInit {
   }
 
   resetPassword(e) {
+    this.msg = "";
     let data = {
-      id_employee:e.value
+      id_employee: e.value
     }
     this.employeeService.resetPassword(data).subscribe(
       res => {
-        let r:any = res;
-        if(r.success){
-          alert('Reseteada');
-        }else{
-          alert('no Reseteada');
+        let r: any = res;
+        if (r.success) {
+          this.msg = "Contraseña restablecida.";
+        } else {
+          this.msg = "La contraseña no pudo ser restablecida.";
         }
       },
       err => {
+        this.msg = "Error en la coneccion con laravel.";
         console.log(err);
-        console.log('Erro con laravel');
       }
     );
   }
 
-  editEmployee(e){
-    this.router.navigate(['/','admin','editar-empleado',`${e.value}`]);
+  editEmployee(e) {
+    this.router.navigate(['/', 'admin', 'editar-empleado', `${e.value}`]);
   }
-
-  foo(ele) {
-    console.log(ele.value);
-
-  }
-
 }

@@ -14,7 +14,7 @@
                     target="black">Ver en maps.</a>
             </div>
             <div class="card-body mt-3 overflow-auto">
-                <ul class="list-group list-group-flush">
+                <ul *ngIf="school" class="list-group list-group-flush">
                     <li class="list-group-item">Dirección: {{school.address}}.</li>
                     <li class="list-group-item">{{school.telephone}}</li>
                     <li class="list-group-item">{{school.celphone}}</li>

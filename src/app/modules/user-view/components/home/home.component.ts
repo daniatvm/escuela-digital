@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { New } from 'src/app/models/new';
 import { School } from 'src/app/models/school';
 import { SchoolService } from 'src/app/services/school.service';
+import { NewsService } from 'src/app/services/news.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
   school: School;
 
 
-  constructor(private schoolService:SchoolService) { }
+  constructor(private schoolService: SchoolService, private newsService: NewsService) { }
 
   ngOnInit() {
     this.getNews();
@@ -25,24 +26,22 @@ export class HomeComponent implements OnInit {
      * Use a service to get news.
      */
   getNews() {
-    this.news = [
-      {
-        id_new: 1,
-        id_user: 1,
-        title: "Gran Bingo Familiar",
-        description: "Este 13 de septiembre acérquese a nuestras instalaciones con sus pequeños y disfrute de esta noche ya que tendremos muchos premios.",
-        image: "http://4.bp.blogspot.com/-eFPm-A1hGl4/VhlPJVz49gI/AAAAAAAAFQo/i_rKC-1xjM0/s1600/tarde-de-bingo-galerias-vallarta.png",
-        date: new Date
+
+    this.newsService.getNewByNewType(1).subscribe(
+      res => {
+        let r: any = res;
+        if (r.success) {
+          this.news = r.data;
+        } else {
+          this.news = [];
+          console.log('No hay noticias');
+        }
       },
-      {
-        id_new: 1,
-        id_user: 1,
-        title: "PENDIENTE",
-        description: "...",
-        image: "http://4.bp.blogspot.com/-eFPm-A1hGl4/VhlPJVz49gI/AAAAAAAAFQo/i_rKC-1xjM0/s1600/tarde-de-bingo-galerias-vallarta.png",
-        date: new Date
+      err => {
+        console.log(err);
+        console.log('Error con laravel');
       }
-    ];
+    )
   }
 
   /**
@@ -51,10 +50,10 @@ export class HomeComponent implements OnInit {
   getSchool() {
     this.schoolService.getSchool().subscribe(
       res => {
-        let r :any = res;
-        if(r.success){
+        let r: any = res;
+        if (r.success) {
           this.school = r.data[0];
-        }else{
+        } else {
           console.log('No hay escuela');
         }
       },

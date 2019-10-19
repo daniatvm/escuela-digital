@@ -1,0 +1,37 @@
+<div class="container-fluid mt-3">
+    <div class="row mt-2">
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <form [formGroup]="addForm" (ngSubmit)="add()">
+                        <div class="form-group">
+                            <label>Imagen</label>
+                            <input class="form-control" type="text" formControlName="image"
+                                [ngClass]="{ 'is-invalid': submitted && f.image.errors }">
+                        </div>
+                        <button class="btn btn-info btn-block">Agregar imagen</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="row">
+                <div *ngFor="let g of gallery" class="col-4 pic_holder mb-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="j">
+                                <img class="card-img-top" [src]="g.image"
+                                    onError="this.src='https://pngimage.net/wp-content/uploads/2018/06/image-not-found-png-6-300x200.png';">
+                                <br>
+                            </div>
+
+                            <button [value]="g.id_gallery" (click)="delete($event.currentTarget)"
+                                class="btn btn-danger btn-block">eliminar</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

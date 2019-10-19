@@ -1,1 +1,26 @@
-<p>create-general-new works!</p>
+<div class="container mt-2">
+        <div class="card mt-2">
+            <div class="card-body">
+                <form [formGroup]="createForm" (ngSubmit)="create()">
+                    <div class="form-group">
+                        <label>Titulo</label>
+                        <input class="form-control" type="text" formControlName="title"
+                            [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+                    </div>
+                    <div class="form-group">
+                        <label>Descripcion</label>
+                        <textarea class="form-control" type="text" formControlName="description"
+                            [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
+                    </div>
+    
+                    <div class="form-group">
+                        <label>Imagen</label>
+                        <input class="form-control" type="text" formControlName="image"
+                            [ngClass]="{ 'is-invalid': submitted && f.image.errors }">
+                    </div>
+    
+                    <button class="btn btn-primary">Crear</button>
+                </form>
+            </div>
+        </div>
+    </div>

@@ -10,6 +10,8 @@ import { CreateLevelComponent } from './components/create-level/create-level.com
 import { CreateClassComponent } from './components/create-class/create-class.component';
 import { EditEmployeeComponent } from './components/edit-employee/edit-employee.component';
 import { AdminSettingsComponent } from './components/admin-settings/admin-settings.component';
+import { EditGalleryComponent } from './components/edit-gallery/edit-gallery.component';
+import { FeedbackCrudComponent } from './components/feedback-crud/feedback-crud.component';
 
 
 const routes: Routes = [
@@ -58,6 +60,14 @@ const routes: Routes = [
         {
           path:'ajustes',
           component:AdminSettingsComponent
+        },
+        {
+          path:'galeria',
+          component:EditGalleryComponent
+        },
+        {
+          path:'feedback',
+          component:FeedbackCrudComponent
         }
       ]
   }

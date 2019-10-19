@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Gallery } from 'src/app/models/gallery';
+import { GalleryService } from 'src/app/services/gallery.service';
 
 @Component({
   selector: 'app-gallery',
@@ -7,11 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GalleryComponent implements OnInit {
 
-  images: any[];
-  firstImage: any;
+  gallery: Gallery[];
+  photo: Gallery;
 
 
-  constructor() { }
+  constructor(private galleryService:GalleryService) { }
 
   ngOnInit() {
     this.loadImages();
@@ -22,22 +24,24 @@ export class GalleryComponent implements OnInit {
 
 
   loadImages() {
-    this.images = [
-      {
-        url: 'https://upload.wikimedia.org/wikipedia/commons/3/38/The_Woodlands_College_Park_Front_Image.jpg'
-      },
-      {
-        url: 'https://static.iris.net.co/semana/upload/images/2019/5/24/616850_1.jpg'
-      },
-      {
-        url: 'https://balneaguaformacion.com/wp-content/uploads/2014/03/Mantenimiento-piscinas1.jpg'
-      },
-      {
-        url: 'https://cdn.ultraplay.com/uploads/products/uPLAY-006-P_MaddiesChase_Houston_TX_0767.jpg'
-      },
-    ];
-    this.firstImage = this.images[0];
-    this.images.shift();
+    this.galleryService.getGallery().subscribe(
+      res => {
+        let r: any = res;
+        if (r.success) {
+          this.gallery = r.data;
 
+          this.photo = this.gallery[0];
+          this.gallery.shift();
+
+        } else {
+          this.gallery = [];
+          console.log('No hay imagenes');
+        }
+      },
+      err => {
+        console.log(err);
+        console.log('Error con laravel');
+      }
+    )
   }
 }
