@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-
+import { api } from "./url.constants";
 @Injectable({
   providedIn: 'root'
 })
@@ -10,42 +10,42 @@ export class EmployeeService {
 
 
   getJobs() {
-    return this.http.get('http://localhost:8000/api/job/');
+    return this.http.get(`${api}/job/`);
   }
 
   createJob(data) {
-    return this.http.post('http://localhost:8000/api/job/', data);
+    return this.http.post(`${api}/job/`, data);
   }
 
   getAccess() {
-    return this.http.get('http://localhost:8000/api/access_type/');
+    return this.http.get(`${api}/access_type/`);
   }
 
   getEmployeeByJob(id_job) {
-    return this.http.get(`http://127.0.0.1:8000/api/employee/by_job/${id_job}`);
+    return this.http.get(`${api}/employee/by_job/${id_job}`);
   }
 
   getEmployees() {
-    return this.http.get(`http://127.0.0.1:8000/api/employee/`);
+    return this.http.get(`${api}/employee/`);
   }
 
   getEmployeeByIdEmployee(id_employee) {
-    return this.http.get(`http://127.0.0.1:8000/api/employee/${id_employee}`);
+    return this.http.get(`${api}/employee/${id_employee}`);
   }
 
   createEmployee(data) {
-    return this.http.post('http://127.0.0.1:8000/api/employee/', data);
+    return this.http.post(`${api}/employee/`, data);
   }
   createUser(data) {
-    return this.http.post('http://127.0.0.1:8000/api/user/', data);
+    return this.http.post(`${api}/user/`, data);
   }
 
   resetPassword(data) {
-    return this.http.post('http://127.0.0.1:8000/api/user/reset_password/', data);
+    return this.http.post(`${api}/user/reset_password/`, data);
   }
   
   changePassword(data) {
-    return this.http.post('http://127.0.0.1:8000/api/user/change_password/', data);
+    return this.http.post(`${api}/user/change_password/`, data);
   }
 
 }

@@ -41,8 +41,10 @@ export class LoginComponent implements OnInit {
         res => {
 
           var response: any = res;
+          console.log(res);
           if (response.success) {
             var data: any = (response.data);
+            console.log(data);
             if (data.id_access_type == 1) {
               this.loginServices.saveLocal(data);
               this.router.navigate(['admin']);

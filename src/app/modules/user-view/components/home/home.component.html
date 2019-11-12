@@ -4,6 +4,9 @@
             <div class="card-header">
                 <h2 class="card-title"> {{school.name}} </h2>
             </div>
+            <div class="mt-1 pic_holder">
+                <img [src]="school.image" class="card-img" [alt]="school.name">
+            </div>
             <div class="card-body">
                 <p class="card-text text-justify">
                     {{school.description}}

@@ -53,6 +53,7 @@ export class HomeComponent implements OnInit {
         let r: any = res;
         if (r.success) {
           this.school = r.data[0];
+          console.log(this.school);
         } else {
           console.log('No hay escuela');
         }

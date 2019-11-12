@@ -1,0 +1,1 @@
+export const api = "https://escuela-rd.com/api/public/api"

@@ -56,4 +56,8 @@ export class SupervisorSettingsComponent implements OnInit {
     }
   }
 
+  get f(){
+    return this.updateForm.controls;
+  }
+
 }
