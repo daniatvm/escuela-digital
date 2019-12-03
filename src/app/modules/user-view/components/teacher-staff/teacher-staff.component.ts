@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from 'src/app/models/employee';
-
+import { EmployeeService } from 'src/app/services/employee.service';
+import { Job } from 'src/app/models/job';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Level } from 'src/app/models/level';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-teacher-staff',
   templateUrl: './teacher-staff.component.html',
@@ -8,53 +12,87 @@ import { Employee } from 'src/app/models/employee';
 })
 export class TeacherStaffComponent implements OnInit {
 
-  teachers: Employee[];
 
-  constructor() { }
+  jobs: Job[];
+  jobSelected: Job;
+  jobFilter: FormGroup;
+  submittedJob: boolean = false;
+
+  msg: string;
+
+  /*levels: Level[];
+  levelSelected: Level;
+  levelFilter: FormGroup;*/
+
+  employees: Employee[];
+
+
+
+  submittedClass: boolean = false;
+
+
+  constructor(private employeeService: EmployeeService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
-    this.loadTeachers();
+    this.loadJobs();
+
+    this.jobFilter = this.formBuilder.group({
+      job: [null, [Validators.required]]
+    });
+
   }
 
-  loadTeachers() {
-    this.teachers = [
-      {
-        id_employee: 1,
-        id_job: 1,
-        //job_name: 'Docente',
-        //cellphone: '8254-6389',
-        name: "Roberto Quesada Alvarado",
-        //email: "ejemplo@email.com",
-        image: "http://buscarempleo.republica.com/files/2012/05/Saca-el-mayor-partido-a-tus-fotograf%C3%ADas-para-el-curr%C3%ADculum-vitae.jpg"
+  filterByJob() {
+    this.msg = "";
+    this.submittedJob = true;
+    if (this.jobFilter.invalid) {
+      this.msg = "Errores en la solicitud.";
+      return;
+    } else {
+      this.employeeService.
+        getEmployeeByJob(this.jobFilter.value.job.id_job).
+        subscribe(
+          res => {
+            let r: any = res;
+            if (r.success) {
+              console.log(r.data)
+              this.employees = r.data;
+              this.msg = "Consulta exitosa!";
+            } else {
+              this.employees = [];
+              this.msg = "No hay empleados creados para este puesto";
+            }
+
+          },
+          err => {
+            this.msg = "Error en la coneccion con laravel.";
+            console.log(err);
+          }
+        )
+    }
+  }
+
+  loadJobs() {
+    this.employeeService.getJobs().subscribe(
+      res => {
+        var r: any = res;
+        if (r.success) {
+          this.jobs = r.data;
+          this.jobSelected = this.jobs[0];
+        } else {
+          console.log('Erro de laravel');
+        }
+
       },
-      {
-        id_employee: 1,
-        id_job: 1,
-        //job_name: 'Profesor musica',
-        //cellphone: '8254-6389',
-        name: "Aurora Escalante Gómez",
-        //email: "ejemplo@email.com",
-        image: "https://hannajaff.com/wp-content/uploads/2013/03/foto-para-CV-229x300.jpg"
-      },
-      {
-        id_employee: 1,
-        id_job: 1,
-        //job_name: 'Asistente administrativo',
-        //cellphone: '8254-6389',
-        name: "Daniela Quesada Segura",
-        //email: "ejemplo@email.com",
-        image: "http://www.slainte21.com/wp-content/uploads/2013/10/DSC_9781.jpg"
-      },
-      {
-        id_employee: 1,
-        id_job: 1,
-        //job_name: 'Profesor Artes Plasticas',
-        //cellphone: '8254-6389',
-        name: "Luis Herrera López",
-        //email: "ejemplo@email.com",
-        image: "https://www.planetacurioso.com/wp-content/uploads/2014/03/hacker-millonarios5.jpg"
+      err => {
+        console.log(err);
+        console.log('Erro de laravel');
       }
-    ];
+    );
+  }
+
+  get jobC() {
+    return this.jobFilter.controls;
   }
 
 }

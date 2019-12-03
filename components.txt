@@ -10,6 +10,7 @@ ng g c modules/user-view/components/gallery --skipTests=true
 ng g c modules/user-view/components/contact --skipTests=true
 ng g c modules/user-view/components/feedback-form --skipTests=true
 ng g c modules/user-view/components/login --skipTests=true
+ng g c modules/user-view/components/terms-and-conditions --skipTests=true
 
 ng g m modules/professor --routing
 ng g c modules/professor --skipTests=true

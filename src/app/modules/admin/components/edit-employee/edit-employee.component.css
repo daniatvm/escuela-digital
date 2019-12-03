@@ -1,0 +1,9 @@
+.pic_holder img{
+    padding: 0;
+    display: block;
+    margin: auto;
+    width: auto;
+    height: auto;
+    max-height: 25vmin;
+    max-width: 25vmin;
+}

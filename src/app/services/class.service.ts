@@ -37,4 +37,8 @@ export class ClassService {
   removeClassXEmployee(id) {
     return this.http.delete(`${api}/class_x_employee/${id}`);
   }
+
+  getClassByLevel(id){
+    return this.http.get(`${api}/class/by_level/${id}`);
+  }
 }

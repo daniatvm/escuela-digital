@@ -82,7 +82,7 @@ export class UpdateSchoolComponent implements OnInit {
         name: this.updateSchool.value.name,
         description: this.updateSchool.value.description,
         address: this.updateSchool.value.address,
-        image: '//',
+        image: 'https://www.bellinghames.org/ourpages/auto/2018/9/6/63182583/school.jpg',
         email: this.updateSchool.value.email,
         telephone: this.updateSchool.value.tel,
         lat: this.updateSchool.value.lat,

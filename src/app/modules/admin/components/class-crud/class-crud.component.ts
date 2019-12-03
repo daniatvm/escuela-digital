@@ -18,6 +18,8 @@ export class ClassCrudComponent implements OnInit {
 
   msg: string;
 
+  classes:any[] = [];
+
   constructor(private classServices: ClassService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -34,7 +36,24 @@ export class ClassCrudComponent implements OnInit {
       this.msg = "Hay errores en la solicitud";
       return;
     } else {
-      alert(`filtrar por${this.filterLevel.value.level.id_level}`);
+      let id = this.filterLevel.value.level.id_level;
+      this.classServices.getClassByLevel(id).subscribe(
+        res => {
+          let r: any = res;
+          if(r.success){
+            this.classes = r.data;
+            console.log(r.data);
+          }else{
+            this.classes = [];
+            alert('No hay clases');
+          }
+        },
+        err => {
+          this.classes = [];
+          console.log('Error con laravel');
+          console.log(err);
+        }
+      )
     }
   }
 

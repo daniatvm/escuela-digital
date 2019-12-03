@@ -14,6 +14,8 @@ import { NewsService } from 'src/app/services/news.service';
 export class GroupsComponent implements OnInit {
 
 
+  notFilter: boolean = false;
+
   news: New[];
 
   levels: Level[];
@@ -132,6 +134,7 @@ export class GroupsComponent implements OnInit {
     if (this.filterForm.invalid) {
       return;
     } else {
+      this.notFilter = true;
       this.getNews();
     }
   }

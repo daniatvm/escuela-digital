@@ -1,1 +1,1 @@
-export const api = "https://escuela-rd.com/api/public/api"
+export const api = "http://localhost:8000/api"

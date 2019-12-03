@@ -17,8 +17,8 @@
 
             </form>
             <hr>
-            <button class="btn btn-info btn-block" [routerLink]="['/','admin','crear-nivel']">Crear nuevo
-                nivel</button>
+            <!-- <button class="btn btn-info btn-block" [routerLink]="['/','admin','crear-nivel']">Crear nuevo
+                nivel</button> -->
             <button class="btn btn-info btn-block" [routerLink]="['/','admin','crear-clases']">Crear nueva
                 clase</button>
             <br><br>
@@ -27,9 +27,37 @@
             </div>
         </div>
         <div class="col-9">
+            <div class="row">
+                <div class="col-4 text-center">
+                    <h4>
+                        Grado
+                    </h4>
+
+                </div>
+                <div class="col-2 text-center">
+                    <h4>
+                        Sección
+                    </h4>
+                </div>
+            </div>
             <hr>
-            lista de clases
-            <hr>
+            <ng-template ngFor let-c [ngForOf]="classes">
+                <div class="row">
+                    <div class="col-4 text-center">
+                        {{c.level}}
+                    </div>
+                    <div class="col-2 text-center">
+                        <p class="text-capitalize">{{c.name}}</p>
+                    </div>
+
+                    <!-- <div class="col-2 text-center">
+                        <button class="btn btn-success" [value]="e.id_employee"
+                            (click)="editEmployee($event.currentTarget)">Editar</button>
+                    </div> -->
+
+                </div>
+                <hr>
+            </ng-template>
         </div>
     </div>
 </div>

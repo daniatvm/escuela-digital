@@ -1,11 +1,14 @@
 <div class="container">
     <div *ngIf="employee" class="card mt-2 w-50 mx-auto">
+
         <div class="card-body">
+            <div class="pic_holder">
+                <img [src]="employee.image" class="card-img" alt="text-img">
+            </div>
+
             <p class="card-title text-capitalize h4">{{employee.name}} {{employee.last_name}}
                 {{employee.second_last_name}}</p>
             <p class="h5">Cedula: {{employee.id_card}}</p>
-            {{employee.image}}
-
 
             <form [formGroup]="removeClass" (ngSubmit)="remove()">
                 <div class="form-group">

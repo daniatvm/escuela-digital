@@ -8,6 +8,7 @@ import { ExecutivesStaffComponent } from './components/executives-staff/executiv
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { LoginComponent } from './components/login/login.component';
+import { TermsAndConditionsComponent } from './components/terms-and-conditions/terms-and-conditions.component';
 
 
 const routes: Routes = [
@@ -47,6 +48,10 @@ const routes: Routes = [
       {
         path: 'Acceso',
         component: LoginComponent
+      },
+      {
+        path: 'terms',
+        component: TermsAndConditionsComponent
       }
     ]
   }

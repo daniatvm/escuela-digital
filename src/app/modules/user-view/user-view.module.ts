@@ -16,9 +16,10 @@ import { AgmCoreModule } from '@agm/core';
 import { FeedbackFormComponent } from './components/feedback-form/feedback-form.component';
 
 import { ReactiveFormsModule, FormsModule }  from '@angular/forms';
+import { TermsAndConditionsComponent } from './components/terms-and-conditions/terms-and-conditions.component';
 
 @NgModule({
-  declarations: [UserViewComponent, HomeComponent, GroupsComponent, TeacherStaffComponent, ExecutivesStaffComponent, GalleryComponent, ContactComponent, LoginComponent, UserNavigationComponent, UserFooterComponent, FeedbackFormComponent],
+  declarations: [UserViewComponent, HomeComponent, GroupsComponent, TeacherStaffComponent, ExecutivesStaffComponent, GalleryComponent, ContactComponent, LoginComponent, UserNavigationComponent, UserFooterComponent, FeedbackFormComponent, TermsAndConditionsComponent],
   imports: [
     CommonModule,
     UserViewRoutingModule,

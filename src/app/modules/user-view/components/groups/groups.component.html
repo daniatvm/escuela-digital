@@ -48,9 +48,9 @@
                 </div>
 
                 <div class="card-body">
-                    <p class="card-title text-muted">Sección: <span> {{new.class_name}}</span>
+                    <p class="card-title text-muted" *ngIf="notFilter">Sección: <span> {{new.class_name}}</span>
                     </p>
-                    <h5 class="card-title">
+                    <h5 class="card-title" *ngIf="notFilter">
                         Publicado por: <span class="text-capitalize"> 
                             {{new.name}} {{new.last_name}} {{new.second_last_name}}
                         </span>
@@ -69,7 +69,9 @@
                     <small class="form-text text-muted "> {{new.date}} </small>
                 </div>
 
+            
             </div>
+
             <!-- <app-group-new></app-group-new> -->
 
         </div>
